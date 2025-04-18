@@ -18,21 +18,21 @@ library(Strategus)
 
 # Time-at-risks (TARs) for the outcomes of interest in your study
 timeAtRisks <- tibble(
-  label = c("On treatment"),
-  riskWindowStart  = c(1),
+  label = c("180 days after the first month"),
+  riskWindowStart  = c(30),
   startAnchor = c("cohort start"),
-  riskWindowEnd  = c(0),
-  endAnchor = c("cohort end")
+  riskWindowEnd  = c(210),
+  endAnchor = c("cohort start")
 )
 
 
 # If you are not restricting your study to a specific time window, 
 # please make these strings empty
-#studyStartDate <- '20171201' #YYYYMMDD
-#studyEndDate <- '20231231'   #YYYYMMDD
+studyStartDate <- '20171201' #YYYYMMDD
+studyEndDate <- '20221231'   #YYYYMMDD
 # Some of the settings require study dates with hyphens
-#studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
-#studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)
+studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
+studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)
 
 
 # Consider these settings for estimation  ----------------------------------------
@@ -50,6 +50,15 @@ cohortDefinitionSet <- CohortGenerator::getCohortDefinitionSet(
   sqlFolder = "inst/sql/sql_server"
 )
 
+# TODO: Create negative controls and add them as a concept set
+#negativeControlOutcomeCohortSet <- CohortGenerator::readCsv(
+#  file = "inst/sampleStudy/Eunomia/negativeControlOutcomes.csv"
+#)
+
+#if (any(duplicated(cohortDefinitionSet$cohortId, negativeControlOutcomeCohortSet$cohortId))) {
+#  stop("*** Error: duplicate cohort IDs found ***")
+#}
+
 # Create some data frames to hold the cohorts we'll use in each analysis ---------------
 # Outcomes: The outcome for this study is cohort_id == 10
 # TODO: Check if CLeanWindow is correct
@@ -61,24 +70,18 @@ oList <- cohortDefinitionSet %>%
 
 # Cohorts for the CohortMethod analysis
 cmTcList <- data.frame(
-  targetCohortId = 1792011,
-  targetCohortName = "risperidone",
-  comparatorCohortId = 1792119,
-  comparatorCohortName = "haloperidol"
+  targetCohortId = 1:9,  
+  targetCohortName = c("risperidone", "haloperidol", "aripiprazole", "brexpiprazole", "olanzapine", "quetiapine", "ziprazidone", "lurazidone", "paliperidone"),
+  comparatorCohortId = 1:9,
+  comparatorCohortName = c("risperidone", "haloperidol", "aripiprazole", "brexpiprazole", "olanzapine", "quetiapine", "ziprazidone", "lurazidone", "paliperidone")
 )
 
 # For the CohortMethod LSPS we'll need to exclude the drugs of interest in this
 # study
-# TODO: check if the descendants are also excluded
+# TODO: Rewrite to create a df of all the concepts
 excludedCovariateConcepts <- data.frame(
   conceptId = c(735979, 766529),
   conceptName = c("risperidone", "haloperidol")
-)
-
-# For the SCCS analysis we'll use the all exposure cohorts
-sccsTList <- data.frame(
-  targetCohortId = c(1,2),
-  targetCohortName = c("risperidone", "haloperidol")
 )
 
 # CohortGeneratorModule --------------------------------------------------------
@@ -111,8 +114,11 @@ cohortDiagnosticsModuleSpecifications <- cdModuleSettingsCreator$createModuleSpe
 
 
 # CohortMethodModule -----------------------------------------------------------
+# TODO: exclude all drugs of interest as covariates
+# and try to do it in a loop for each respective analysis
 cmModuleSettingsCreator <- CohortMethodModule$new()
 covariateSettings <- FeatureExtraction::createDefaultCovariateSettings(
+  excludedCovariateConceptIds = excludedCovariateConcepts$conceptId,
   addDescendantsToExclude = TRUE # Keep TRUE because you're excluding concepts
 )
 outcomeList <- append(
@@ -136,6 +142,8 @@ outcomeList <- append(
     )
   })
 )
+# TODO: exclude all drugs of interest as covariates
+# and try to do it in a loop for each respective analysis
 targetComparatorOutcomesList <- list()
 for (i in seq_len(nrow(cmTcList))) {
   targetComparatorOutcomesList[[i]] <- CohortMethod::createTargetComparatorOutcomes(
@@ -150,7 +158,7 @@ for (i in seq_len(nrow(cmTcList))) {
   )
 }
 getDbCohortMethodDataArgs <- CohortMethod::createGetDbCohortMethodDataArgs(
-  restrictToCommonPeriod = TRUE,
+  restrictToCommonPeriod = FALSE,
   studyStartDate = studyStartDate,
   studyEndDate = studyEndDate,
   maxCohortSize = 0,
@@ -163,7 +171,7 @@ createPsArgs = CohortMethod::createCreatePsArgs(
   estimator = "att",
   prior = Cyclops::createPrior(
     priorType = "laplace", 
-    exclude = c(0), 
+    exclude = excludedCovariateConcepts$conceptId, 
     useCrossValidation = TRUE
   ),
   control = Cyclops::createControl(
@@ -183,6 +191,7 @@ matchOnPsArgs = CohortMethod::createMatchOnPsArgs(
   allowReverseMatch = FALSE,
   stratificationColumns = c()
 )
+# TODO: decide on stratification
 # stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(
 #   numberOfStrata = 5,
 #   stratificationColumns = c(),
@@ -196,9 +205,10 @@ computeCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(
   maxCohortSize = 250000,
   covariateFilter = FeatureExtraction::getDefaultTable1Specifications()
 )
+# TODO: check the parameters
 fitOutcomeModelArgs = CohortMethod::createFitOutcomeModelArgs(
   modelType = "cox",
-  stratified = psMatchMaxRatio != 1,
+  stratified = FALSE,
   useCovariates = FALSE,
   inversePtWeighting = FALSE,
   prior = Cyclops::createPrior(
@@ -219,10 +229,10 @@ cmAnalysisList <- list()
 for (i in seq_len(nrow(timeAtRisks))) {
   createStudyPopArgs <- CohortMethod::createCreateStudyPopulationArgs(
     firstExposureOnly = FALSE,
-    washoutPeriod = 0,
-    removeDuplicateSubjects = "keep first",
+    washoutPeriod = 365,
+    removeDuplicateSubjects = "keep all",
     censorAtNewRiskWindow = TRUE,
-    removeSubjectsWithPriorOutcome = TRUE,
+    removeSubjectsWithPriorOutcome = FALSE,
     priorOutcomeLookback = 99999,
     riskWindowStart = timeAtRisks$riskWindowStart[[i]],
     startAnchor = timeAtRisks$startAnchor[[i]],
@@ -257,196 +267,19 @@ cohortMethodModuleSpecifications <- cmModuleSettingsCreator$createModuleSpecific
 )
 
 
-# SelfControlledCaseSeriesmodule -----------------------------------------------
-sccsModuleSettingsCreator <- SelfControlledCaseSeriesModule$new()
-uniqueTargetIds <- sccsTList$targetCohortId
-
-eoList <- list()
-for (targetId in uniqueTargetIds) {
-  for (outcomeId in oList$outcomeCohortId) {
-    eoList[[length(eoList) + 1]] <- SelfControlledCaseSeries::createExposuresOutcome(
-      outcomeId = outcomeId,
-      exposures = list(
-        SelfControlledCaseSeries::createExposure(
-          exposureId = targetId,
-          trueEffectSize = NA
-        )
-      )
-    )
-  }
-  for (outcomeId in negativeControlOutcomeCohortSet$cohortId) {
-    eoList[[length(eoList) + 1]] <- SelfControlledCaseSeries::createExposuresOutcome(
-      outcomeId = outcomeId,
-      exposures = list(SelfControlledCaseSeries::createExposure(
-        exposureId = targetId, 
-        trueEffectSize = 1
-      ))
-    )
-  }
-}
-sccsAnalysisList <- list()
-analysisToInclude <- data.frame()
-# NOTE - NOT USING NESTING BY INDICATION
-#for (i in seq_len(nrow(sccsIList))) {
-  #indicationId <- sccsIList$indicationCohortId[i]
-  getDbSccsDataArgs <- SelfControlledCaseSeries::createGetDbSccsDataArgs(
-    maxCasesPerOutcome = 1000000,
-    useNestingCohort = FALSE,
-    #nestingCohortId = indicationId,
-    studyStartDate = studyStartDate,
-    studyEndDate = studyEndDate,
-    deleteCovariatesSmallCount = 0
-  )
-  createStudyPopulationArgs = SelfControlledCaseSeries::createCreateStudyPopulationArgs(
-    firstOutcomeOnly = TRUE,
-    naivePeriod = 365,
-    minAge = 18,
-    genderConceptIds = c(8507, 8532)
-  )
-  covarPreExp <- SelfControlledCaseSeries::createEraCovariateSettings(
-    label = "Pre-exposure",
-    includeEraIds = "exposureId",
-    start = -30,
-    startAnchor = "era start",
-    end = -1,
-    endAnchor = "era start",
-    firstOccurrenceOnly = FALSE,
-    allowRegularization = FALSE,
-    profileLikelihood = FALSE,
-    exposureOfInterest = FALSE
-  )
-  calendarTimeSettings <- SelfControlledCaseSeries::createCalendarTimeCovariateSettings(
-    calendarTimeKnots = 5,
-    allowRegularization = TRUE,
-    computeConfidenceIntervals = FALSE
-  )
-  # seasonalitySettings <- SelfControlledCaseSeries:createSeasonalityCovariateSettings(
-  #   seasonKnots = 5,
-  #   allowRegularization = TRUE,
-  #   computeConfidenceIntervals = FALSE
-  # )
-  fitSccsModelArgs <- SelfControlledCaseSeries::createFitSccsModelArgs(
-    prior = Cyclops::createPrior("laplace", useCrossValidation = TRUE), 
-    control = Cyclops::createControl(
-      cvType = "auto", 
-      selectorType = "byPid", 
-      startingVariance = 0.1, 
-      seed = 1, 
-      resetCoefficients = TRUE, 
-      noiseLevel = "quiet")
-  )
-  for (j in seq_len(nrow(timeAtRisks))) {
-    covarExposureOfInt <- SelfControlledCaseSeries::createEraCovariateSettings(
-      label = "Main",
-      includeEraIds = "exposureId",
-      start = timeAtRisks$riskWindowStart[j],
-      startAnchor = gsub("cohort", "era", timeAtRisks$startAnchor[j]),
-      end = timeAtRisks$riskWindowEnd[j],
-      endAnchor = gsub("cohort", "era", timeAtRisks$endAnchor[j]),
-      firstOccurrenceOnly = FALSE,
-      allowRegularization = FALSE,
-      profileLikelihood = TRUE,
-      exposureOfInterest = TRUE
-    )
-    createSccsIntervalDataArgs <- SelfControlledCaseSeries::createCreateSccsIntervalDataArgs(
-      eraCovariateSettings = list(covarPreExp, covarExposureOfInt),
-      # seasonalityCovariateSettings = seasonalityCovariateSettings,
-      calendarTimeCovariateSettings = calendarTimeSettings
-    )
-    description <- "SCCS"
-    description <- sprintf("%s, male, female, age >= %s", description, createStudyPopulationArgs$minAge)
-    description <- sprintf("%s, %s", description, timeAtRisks$label[j])
-    sccsAnalysisList[[length(sccsAnalysisList) + 1]] <- SelfControlledCaseSeries::createSccsAnalysis(
-      analysisId = length(sccsAnalysisList) + 1,
-      description = description,
-      getDbSccsDataArgs = getDbSccsDataArgs,
-      createStudyPopulationArgs = createStudyPopulationArgs,
-      createIntervalDataArgs = createSccsIntervalDataArgs,
-      fitSccsModelArgs = fitSccsModelArgs
-    )
-  }
-#}
-selfControlledModuleSpecifications <- sccsModuleSettingsCreator$createModuleSpecifications(
-  sccsAnalysisList = sccsAnalysisList,
-  exposuresOutcomeList = eoList,
-  combineDataFetchAcrossOutcomes = FALSE,
-  sccsDiagnosticThresholds = SelfControlledCaseSeries::createSccsDiagnosticThresholds()
-)
-
-# PatientLevelPredictionModule -------------------------------------------------
-plpModuleSettingsCreator <- PatientLevelPredictionModule$new()
-
-modelSettings <- list(
-  lassoLogisticRegression = PatientLevelPrediction::setLassoLogisticRegression()
-  #randomForest = PatientLevelPrediction::setRandomForest()
-)
-modelDesignList <- list()
-for (cohortId in tcIds) {
-  for (j in seq_len(nrow(plpTimeAtRisks))) {
-    for (k in seq_len(nrow(oList))) {
-      if (useCleanWindowForPriorOutcomeLookback) {
-        priorOutcomeLookback <- oList$cleanWindow[k]
-      } else {
-        priorOutcomeLookback <- 99999
-      }
-      for (mSetting in modelSettings) {
-        modelDesignList[[length(modelDesignList) + 1]] <- PatientLevelPrediction::createModelDesign(
-          targetId = cohortId,
-          outcomeId = oList$outcomeCohortId[k],
-          restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
-            sampleSize = 1000000,
-            studyStartDate = studyStartDate,
-            studyEndDate = studyEndDate,
-            firstExposureOnly = FALSE,
-            washoutPeriod = 0
-          ),
-          populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
-            riskWindowStart = plpTimeAtRisks$riskWindowStart[j],
-            startAnchor = plpTimeAtRisks$startAnchor[j],
-            riskWindowEnd = plpTimeAtRisks$riskWindowEnd[j],
-            endAnchor = plpTimeAtRisks$endAnchor[j],
-            removeSubjectsWithPriorOutcome = TRUE,
-            priorOutcomeLookback = priorOutcomeLookback,
-            requireTimeAtRisk = FALSE,
-            binary = TRUE,
-            includeAllOutcomes = TRUE,
-            firstExposureOnly = FALSE,
-            washoutPeriod = 0,
-            minTimeAtRisk = plpTimeAtRisks$riskWindowEnd[j] - plpTimeAtRisks$riskWindowStart[j],
-            restrictTarToCohortEnd = FALSE
-          ),
-          covariateSettings = FeatureExtraction::createCovariateSettings(
-            useDemographicsGender = TRUE,
-            useDemographicsAgeGroup = TRUE,
-            useConditionGroupEraLongTerm = TRUE,
-            useDrugGroupEraLongTerm = TRUE,
-            useVisitConceptCountLongTerm = TRUE
-          ),
-          preprocessSettings = PatientLevelPrediction::createPreprocessSettings(),
-          modelSettings = mSetting
-        )
-      }
-    }
-  }
-}
-plpModuleSpecifications <- plpModuleSettingsCreator$createModuleSpecifications(
-  modelDesignList = modelDesignList
-)
-
-
 # Create the analysis specifications ------------------------------------------
 analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
   Strategus::addSharedResources(cohortDefinitionShared) |> 
   Strategus::addSharedResources(negativeControlsShared) |>
   Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
-  Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
-  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
+#  Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
+#  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortMethodModuleSpecifications) |>
-  Strategus::addModuleSpecifications(selfControlledModuleSpecifications) |>
-  Strategus::addModuleSpecifications(plpModuleSpecifications)
+#  Strategus::addModuleSpecifications(selfControlledModuleSpecifications) |>
+#  Strategus::addModuleSpecifications(plpModuleSpecifications)
 
 ParallelLogger::saveSettingsToJson(
   analysisSpecifications, 
-  file.path("inst", "sampleStudy", "Eunomia", "sampleStudyAnalysisSpecification.json")
+  file.path("inst", "FepPharmacotherapyAnalysisSpecification.json")
 )

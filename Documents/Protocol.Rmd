@@ -120,16 +120,22 @@ Schizophrenia is a severe neuropsychiatric disorder which often lead to a signif
 This study aims at creating a head-to-head comparison framework for the effectiveness several commonly used FGAs and SGAs when used in treating patients with first-episode psychoses.
 
 **Study Description**: 
+We will conduct a large-scale, systematic, observational study for each of the pairwise comparisons of 9 drugs of interest (Risperidone, Haloperidol, Aripiprazole, Brexpiprazole, Olanzapine, Quetiapine, Ziprazidone, Lurazidone, Paliperidone). This list includes the most common antipsychotic agents used for treatment of the first psychotic episode as per the results of OHDSI "Phenotype Phebruary 2025" initiative [7].
 
 * **Population**: 
+Patients 18-40 years old experiencing a first-in-a-lifetime of psychotic episode, and with no record of treatment non-adherence during the diagnosis period who are first-time users of a specific AP. For a diagnosis setting, we will require either a recorded inpatient visit or 2 subsequent visits within 30 days. We will exclude patients who had a diagnosis of an organic or drug-induced mental disorder to control for diagnosis recording differences across datasets.  
 
 * **Comparators**:
-  
+We defined drugs by a respective ingredient or, in the case of Quetiapine, of a dose of 100 mg or more. First exposure  to one of the drugs on the list will be an indexing event, and we will not allow for polypharmacotherapy with APs by censoring on exposure to any other AP unless it happens between the 2 visits requires in the "Population" section.
+
 * **Outcomes**:
-  
+We will use rehospitalization with a diagnosis of a psychotic disorder as a proxy for drug effectiveness. As mentioned above, relapse prevention is one of the key targets in treatment of first-episode psychosis. Rehospitalization as an outcome encompasses both inherent drug effectiveness as well as such factors as side effects influencing treatment adherence.
+
 * **Design**: 
+Observational, active-comparator, new-user cohort study.
 
 * **Timeframe**: 
+We will consider Time-at-Risk window to start from the 31st day from cohort start (initial drug exposure) and last for 180 days.
 
 \clearpage
 
@@ -142,7 +148,7 @@ This study aims at creating a head-to-head comparison framework for the effectiv
 
 
 # Rationale and Background
-
+In the research field of psychiatry, measuring treatment effectiveness and outcomes and providing clinicians a clear roadmap for treatment are challenging tasks. This is, among other things, related to low perceived severity of the disorders, perceived treatment ineffectiveness and stigma among patients [8]. Such complications to the research process result in difficulties when stratifying treatment options in the clinical guidelines, giving the practitioners guidance on the general principles, but leading to inconsistent treatment and care patterns across the globe [9-11].
 # Study Objectives
 
 # Research Methods
@@ -182,6 +188,11 @@ references <- readr::read_delim(col_names = FALSE, delim = "|", trim_ws = TRUE, 
   4| Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Services vs Treatment as Usual for Early-Phase Psychosis: A Systematic Review, Meta-analysis, and Meta-regression. JAMA Psychiatry. 2018;75(6):555-565. doi:10.1001/jamapsychiatry.2018.0623
   5| Alvarez-Jiménez M, Parker AG, Hetrick SE, McGorry PD, Gleeson JF. Preventing the second episode: a systematic review and meta-analysis of psychosocial and pharmacological trials in first-episode psychosis. Schizophr Bull. 2011;37(3):619-630. doi:10.1093/schbul/sbp129
   6| Keepers GA, Fochtmann LJ, Anzia JM, et al. The American Psychiatric Association Practice Guideline for the Treatment of Patients With Schizophrenia. Am J Psychiatry. 2020;177(9):868-872. doi:10.1176/appi.ajp.2020.177901
+  7| https://results.ohdsi.org/app/26_PhenotypePhebruary2025
+  8| Viana MC, Kazdin AE, Harris MG, et al. Barriers to 12-month treatment of common anxiety, mood, and substance use disorders in the World Mental Health (WMH) surveys. Int J Ment Health Syst. 2025;19(1):6. Published 2025 Feb 9. doi:10.1186/s13033-024-00658-2
+  9| Vigo DV, Stein DJ, Harris MG, et al. Effective Treatment for Mental and Substance Use Disorders in 21 Countries. JAMA Psychiatry. 2025;82(4):347-357. doi:10.1001/jamapsychiatry.2024.4378
+  10| Martin A, Bessonova L, Hughes R, et al. Systematic Review of Real-World Treatment Patterns of Oral Antipsychotics and Associated Economic Burden in Patients with Schizophrenia in the United States. Adv Ther. 2022;39(9):3933-3956. doi:10.1007/s12325-022-02232-z
+  11| Kohn R, Saxena S, Levav I, Saraceno B. The treatment gap in mental health care. Bull World Health Organ. 2004;82(11):858-866.
 ")
 
 tab <- kable(references, col.names = NULL, linesep = "", booktabs = TRUE)

@@ -17,10 +17,11 @@ Sys.setenv("_JAVA_OPTIONS"="-Xmx4g") # Sets the Java maximum heap space to 4GB
 Sys.setenv("VROOM_THREADS"=1) # Sets the number of threads to 1 to avoid deadlocks on file system
 
 ##=========== START OF INPUTS ==========
-cdmDatabaseSchema <- "main"
-workDatabaseSchema <- "main"
+
+cdmDatabaseSchema <- "cdm_531"
+workDatabaseSchema <- "alex_alexeyuk_results"
 outputLocation <- file.path(getwd(), "results")
-databaseName <- "Eunomia" # Only used as a folder name for results from the study
+databaseName <- "synpuf" # Only used as a folder name for results from the study
 minCellCount <- 5
 cohortTableName <- "sample_study"
 

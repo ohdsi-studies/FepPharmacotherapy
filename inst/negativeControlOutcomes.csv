@@ -1,0 +1,101 @@
+cohort_id,cohort_name,outcome_concept_id
+1001,Abnormal posture,439935
+1002,Abrasion and/or friction burn of multiple sites,443585
+1003,Absent kidney,4092879
+1004,Anomaly of jaw size,45757682
+1005,Benign paroxysmal positional vertigo,81878
+1006,Bizarre personal appearance,4216219
+1007,Cachexia,134765
+1008,Colostomy present,4201390
+1009,Complication of gastrostomy,434675
+1010,Developmental delay,436077
+1011,Deviated nasal septum,377910
+1012,Epidermoid cyst,4170770
+1013,Exhaustion due to excessive exertion,437448
+1014,Feces contents abnormal,4092896
+1015,Foreign body in ear,374801
+1016,Foreskin deficient,4096540
+1017,Galactosemia,439788
+1018,Ganglion cyst,40481632
+1019,Genetic disorder carrier,4168318
+1020,Impacted cerumen,374375
+1021,Inadequate sleep hygiene,40481897
+1022,Jellyfish poisoning,4265896
+1023,Lagophthalmos,381021
+1024,Lipid storage disease,4027782
+1025,Lymphangioma,433997
+1026,Malingering,4051630
+1027,Marfan's syndrome,258540
+1028,"Mechanical complication of internal orthopedic device, implant AND/OR graft",432798
+1029,Minimal cognitive impairment,439795
+1030,Nicotine dependence,4209423
+1031,Nonspecific tuberculin test reaction,40480893
+1032,Opioid abuse,438130
+1033,Opioid intoxication,4299094
+1034,Physiological development failure,437092
+1035,Poisoning by tranquilizer,433951
+1036,Social exclusion,4019836
+1037,Symbolic dysfunction,432436
+1038,Tooth loss,433244
+1039,Toxic effect of lead compound,436876
+1040,Toxic effect of tobacco and nicotine,440612
+1041,Tracheostomy present,4201387
+1042,Unsatisfactory tooth restoration,45757285
+1043,Abnormal pupil,436409
+1044,Abrasion and/or friction burn of trunk without infection,199192
+1045,Absence of breast,4088290
+1046,Acquired hallux valgus,75911
+1047,Acquired keratoderma,137951
+1048,Anal and rectal polyp,73241
+1049,Burn of forearm,133655
+1050,Calcaneal spur,73560
+1051,Cannabis abuse,434327
+1052,Changes in skin texture,140842
+1053,Chondromalacia of patella,81378
+1054,Cocaine abuse,432303
+1055,Complication due to Crohn's disease,46269889
+1056,Contact dermatitis,134438
+1057,Contusion of knee,78619
+1058,Crohn's disease,201606
+1059,Derangement of knee,76786
+1060,Difficulty sleeping,4115402
+1061,Disproportion of reconstructed breast,45757370
+1062,Effects of hunger,433111
+1063,Endometriosis,433527
+1064,Feces contents abnormal,4092896
+1065,Foreign body in orifice,259995
+1066,Ganglion cyst,40481632
+1067,Hammer toe,433577
+1068,Hereditary thrombophilia,4231770
+1069,High risk sexual behavior,4012570
+1070,Homocystinuria,4012934
+1071,Impacted cerumen,374375
+1072,Impingement syndrome of shoulder region,4344500
+1073,Ingrowing nail,139099
+1074,Injury of knee,444132
+1075,Kwashiorkor,432593
+1076,Late effect of contusion,434203
+1077,Late effect of motor vehicle accident,438329
+1078,Macular drusen,4083487
+1079,Melena,4103703
+1080,Nicotine dependence,4209423
+1081,Noise effects on inner ear,377572
+1082,Non-toxic multinodular goiter,136368
+1083,Nonspecific tuberculin test reaction,40480893
+1084,Opioid abuse,438130
+1085,Passing flatus,4091513
+1086,Postviral fatigue syndrome,4202045
+1087,Presbyopia,373478
+1088,Psychalgia,439790
+1089,Ptotic breast,81634
+1090,Regular astigmatism,380706
+1091,Senile hyperkeratosis,141932
+1092,Somatic dysfunction of lumbar region,36713918
+1093,Splinter of face without major open wound,443172
+1094,Sprain of ankle,81151
+1095,Strain of rotator cuff capsule,72748
+1096,Tear film insufficiency,378427
+1097,Tobacco dependence syndrome,437264
+1098,Verruca vulgaris,140641
+1099,Wrist joint pain,4115367
+1100,Wristdrop,440193

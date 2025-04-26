@@ -28,8 +28,8 @@ timeAtRisks <- tibble(
 
 # If you are not restricting your study to a specific time window, 
 # please make these strings empty
-studyStartDate <- '20071201' #YYYYMMDD
-studyEndDate <- '20111231'   #YYYYMMDD
+studyStartDate <- '20171201' #YYYYMMDD
+studyEndDate <- '20124231'   #YYYYMMDD
 # Some of the settings require study dates with hyphens
 studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
 studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)
@@ -136,30 +136,24 @@ cohortDiagnosticsModuleSpecifications <- cdModuleSettingsCreator$createModuleSpe
 
 
 # CohortMethodModule -----------------------------------------------------------
-# TODO: exclude all drugs of interest as covariates
 # and try to do it in a loop for each respective analysis
 cmModuleSettingsCreator <- CohortMethodModule$new()
 covariateSettings <- FeatureExtraction::createDefaultCovariateSettings(
   excludedCovariateConceptIds = excludedCovariateConcepts$conceptId
 )
 outcomeList <- append(lapply(seq_len(nrow(oList)), function(i) {
-    if (useCleanWindowForPriorOutcomeLookback) {
-      priorOutcomeLookback <- oList$cleanWindow[i]
-    } else {
-      priorOutcomeLookback <- 99999
-    }
-    CohortMethod::createOutcome(
+  CohortMethod::createOutcome(
       outcomeId = oList$outcomeCohortId[i],
       outcomeOfInterest = TRUE,
-      trueEffectSize = NA,
-      priorOutcomeLookback = priorOutcomeLookback
+      trueEffectSize = NA
     )
   }),
   lapply(negativeControlOutcomeCohortSet$cohortId, function(i) {
     CohortMethod::createOutcome(
       outcomeId = i,
       outcomeOfInterest = FALSE,
-      trueEffectSize = 1
+      trueEffectSize = 1,
+      priorOutcomeLookback  = 99999
     )
   }))
 
@@ -206,12 +200,12 @@ matchOnPsArgs = CohortMethod::createMatchOnPsArgs(
   allowReverseMatch = FALSE,
   stratificationColumns = c()
 )
-# TODO: decide on stratification
-# stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(
-#   numberOfStrata = 5,
-#   stratificationColumns = c(),
-#   baseSelection = "all"
-# )
+
+stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(
+  numberOfStrata = 5,
+  stratificationColumns = c(),
+  baseSelection = "all"
+)
 computeSharedCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(
   maxCohortSize = 250000,
   covariateFilter = NULL
@@ -244,11 +238,10 @@ cmAnalysisList <- list()
 for (i in seq_len(nrow(timeAtRisks))) {
   createStudyPopArgs <- CohortMethod::createCreateStudyPopulationArgs(
     firstExposureOnly = FALSE,
-    washoutPeriod = 365,
     removeDuplicateSubjects = "keep all",
     censorAtNewRiskWindow = TRUE,
     removeSubjectsWithPriorOutcome = FALSE,
-    priorOutcomeLookback = 99999,
+    priorOutcomeLookback = 0,
     riskWindowStart = timeAtRisks$riskWindowStart[[i]],
     startAnchor = timeAtRisks$startAnchor[[i]],
     riskWindowEnd = timeAtRisks$riskWindowEnd[[i]],

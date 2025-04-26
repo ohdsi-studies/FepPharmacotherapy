@@ -40,7 +40,13 @@ cohortTableName <- "sample_study"
 # can install this by running:
 #
 # install.packages("Eunomia")
-connectionDetails <- Eunomia::getEunomiaConnectionDetails()
+connectionDetails <- DatabaseConnector::createConnectionDetails(
+  dbms = "postgresql",
+  server = Sys.getenv("SERVER"),
+  user = Sys.getenv("DB_USER"),
+  password = Sys.getenv("DB_PASSWORD"),
+  port = "5441"
+)
 
 # You can use this snippet to test your connection
 #conn <- DatabaseConnector::connect(connectionDetails)
@@ -48,7 +54,7 @@ connectionDetails <- Eunomia::getEunomiaConnectionDetails()
 
 ##=========== END OF INPUTS ==========
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/sampleStudy/sampleStudyAnalysisSpecification.json"
+  fileName = "inst/FepPharmacotherapyAnalysisSpecification.json"
 )
 
 executionSettings <- Strategus::createCdmExecutionSettings(

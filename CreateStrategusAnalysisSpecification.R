@@ -29,7 +29,7 @@ timeAtRisks <- tibble(
 # If you are not restricting your study to a specific time window, 
 # please make these strings empty
 studyStartDate <- '20171201' #YYYYMMDD
-studyEndDate <- '20124231'   #YYYYMMDD
+studyEndDate <- '2024231'   #YYYYMMDD
 # Some of the settings require study dates with hyphens
 studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
 studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)

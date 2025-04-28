@@ -29,7 +29,7 @@ timeAtRisks <- tibble(
 # If you are not restricting your study to a specific time window, 
 # please make these strings empty
 studyStartDate <- '20171201' #YYYYMMDD
-studyEndDate <- '20221231'   #YYYYMMDD
+studyEndDate <- '2024231'   #YYYYMMDD
 # Some of the settings require study dates with hyphens
 studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
 studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)
@@ -51,9 +51,9 @@ cohortDefinitionSet <- CohortGenerator::getCohortDefinitionSet(
 )
 
 # TODO: Create negative controls and add them as a concept set
-#negativeControlOutcomeCohortSet <- CohortGenerator::readCsv(
-#  file = "inst/sampleStudy/Eunomia/negativeControlOutcomes.csv"
-#)
+negativeControlOutcomeCohortSet <- CohortGenerator::readCsv(
+ file = "inst/negativeControlOutcomes.csv"
+)
 
 #if (any(duplicated(cohortDefinitionSet$cohortId, negativeControlOutcomeCohortSet$cohortId))) {
 #  stop("*** Error: duplicate cohort IDs found ***")
@@ -62,12 +62,21 @@ cohortDefinitionSet <- CohortGenerator::getCohortDefinitionSet(
 # Create some data frames to hold the cohorts we'll use in each analysis ---------------
 # Outcomes: The outcome for this study is cohort_id == 10
 # TODO: Check if CLeanWindow is correct
-oList <- cohortDefinitionSet %>%
-  filter(.data$cohortId == 10) %>%
-  mutate(outcomeCohortId = cohortId, outcomeCohortName = cohortName) %>%
-  select(outcomeCohortId, outcomeCohortName) %>%
+oList <- cohortDefinitionSet |>
+  filter(cohortId == 10) |>
+  mutate(
+    outcomeCohortId = cohortId, 
+    outcomeCohortName = cohortName) |>
+  select(outcomeCohortId, outcomeCohortName) |>
   mutate(cleanWindow = 365)
 
+ingredients <- tibble(
+  conceptId = c(735979, 766529, 757688, 46275300, 
+                 785788, 766814, 40137339, 703244),
+  conceptName = c("risperidone", "haloperidol", "aripiprazole", 
+                   "brexpiprazole", "olanzapine", "quetiapine", 
+                   "paliperidone", "paliperidone")
+  )
 # Cohorts for the CohortMethod analysis
 cmTcList <- data.frame(
   targetCohortId = 1:9,  
@@ -76,13 +85,26 @@ cmTcList <- data.frame(
   comparatorCohortName = c("risperidone", "haloperidol", "aripiprazole", "brexpiprazole", "olanzapine", "quetiapine", "ziprazidone", "lurazidone", "paliperidone")
 )
 
+analysisGrid <- tidyr::expand_grid(
+  targetId = cmTcList$targetCohortId,
+  comparatorId = cmTcList$targetCohortId
+) |>
+  filter(targetId != comparatorId) |>
+  filter(targetId < comparatorId) |>
+  left_join(
+    cmTcList |> select(targetId = targetCohortId, targetName = targetCohortName),
+    by = "targetId"
+  ) |>
+  left_join(
+    cmTcList |> select(comparatorId = comparatorCohortId, comparatorName = comparatorCohortName),
+    by = "comparatorId"
+  )
+
+
 # For the CohortMethod LSPS we'll need to exclude the drugs of interest in this
 # study
 # TODO: Rewrite to create a df of all the concepts
-excludedCovariateConcepts <- data.frame(
-  conceptId = c(735979, 766529),
-  conceptName = c("risperidone", "haloperidol")
-)
+excludedCovariateConcepts <- ingredients
 
 # CohortGeneratorModule --------------------------------------------------------
 cgModuleSettingsCreator <- CohortGeneratorModule$new()
@@ -114,49 +136,36 @@ cohortDiagnosticsModuleSpecifications <- cdModuleSettingsCreator$createModuleSpe
 
 
 # CohortMethodModule -----------------------------------------------------------
-# TODO: exclude all drugs of interest as covariates
 # and try to do it in a loop for each respective analysis
 cmModuleSettingsCreator <- CohortMethodModule$new()
 covariateSettings <- FeatureExtraction::createDefaultCovariateSettings(
-  excludedCovariateConceptIds = excludedCovariateConcepts$conceptId,
-  addDescendantsToExclude = TRUE # Keep TRUE because you're excluding concepts
+  excludedCovariateConceptIds = excludedCovariateConcepts$conceptId
 )
-outcomeList <- append(
-  lapply(seq_len(nrow(oList)), function(i) {
-    if (useCleanWindowForPriorOutcomeLookback)
-      priorOutcomeLookback <- oList$cleanWindow[i]
-    else
-      priorOutcomeLookback <- 99999
-    CohortMethod::createOutcome(
+outcomeList <- append(lapply(seq_len(nrow(oList)), function(i) {
+  CohortMethod::createOutcome(
       outcomeId = oList$outcomeCohortId[i],
       outcomeOfInterest = TRUE,
-      trueEffectSize = NA,
-      priorOutcomeLookback = priorOutcomeLookback
+      trueEffectSize = NA
     )
   }),
   lapply(negativeControlOutcomeCohortSet$cohortId, function(i) {
     CohortMethod::createOutcome(
       outcomeId = i,
       outcomeOfInterest = FALSE,
-      trueEffectSize = 1
+      trueEffectSize = 1,
+      priorOutcomeLookback  = 99999
     )
-  })
-)
-# TODO: exclude all drugs of interest as covariates
-# and try to do it in a loop for each respective analysis
-targetComparatorOutcomesList <- list()
-for (i in seq_len(nrow(cmTcList))) {
-  targetComparatorOutcomesList[[i]] <- CohortMethod::createTargetComparatorOutcomes(
-    targetId = cmTcList$targetCohortId[i],
-    comparatorId = cmTcList$comparatorCohortId[i],
-    outcomes = outcomeList,
-    excludedCovariateConceptIds = c(
-      cmTcList$targetConceptId[i], 
-      cmTcList$comparatorConceptId[i],
-      excludedCovariateConcepts$conceptId
-    )
+  }))
+
+targetComparatorOutcomesList <- purrr::pmap(analysisGrid, ~ CohortMethod::createTargetComparatorOutcomes(
+  targetId = ..1,
+  comparatorId = ..2,
+  outcomes = outcomeList,
+  excludedCovariateConceptIds = c(
+    excludedCovariateConcepts$conceptId
   )
-}
+))
+
 getDbCohortMethodDataArgs <- CohortMethod::createGetDbCohortMethodDataArgs(
   restrictToCommonPeriod = FALSE,
   studyStartDate = studyStartDate,
@@ -191,12 +200,12 @@ matchOnPsArgs = CohortMethod::createMatchOnPsArgs(
   allowReverseMatch = FALSE,
   stratificationColumns = c()
 )
-# TODO: decide on stratification
-# stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(
-#   numberOfStrata = 5,
-#   stratificationColumns = c(),
-#   baseSelection = "all"
-# )
+
+stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(
+  numberOfStrata = 5,
+  stratificationColumns = c(),
+  baseSelection = "all"
+)
 computeSharedCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(
   maxCohortSize = 250000,
   covariateFilter = NULL
@@ -229,11 +238,10 @@ cmAnalysisList <- list()
 for (i in seq_len(nrow(timeAtRisks))) {
   createStudyPopArgs <- CohortMethod::createCreateStudyPopulationArgs(
     firstExposureOnly = FALSE,
-    washoutPeriod = 365,
     removeDuplicateSubjects = "keep all",
     censorAtNewRiskWindow = TRUE,
     removeSubjectsWithPriorOutcome = FALSE,
-    priorOutcomeLookback = 99999,
+    priorOutcomeLookback = 0,
     riskWindowStart = timeAtRisks$riskWindowStart[[i]],
     startAnchor = timeAtRisks$startAnchor[[i]],
     riskWindowEnd = timeAtRisks$riskWindowEnd[[i]],
@@ -273,11 +281,7 @@ analysisSpecifications <- Strategus::createEmptyAnalysisSpecificiations() |>
   Strategus::addSharedResources(negativeControlsShared) |>
   Strategus::addModuleSpecifications(cohortGeneratorModuleSpecifications) |>
   Strategus::addModuleSpecifications(cohortDiagnosticsModuleSpecifications) |>
-#  Strategus::addModuleSpecifications(characterizationModuleSpecifications) |>
-#  Strategus::addModuleSpecifications(cohortIncidenceModuleSpecifications) |>
-  Strategus::addModuleSpecifications(cohortMethodModuleSpecifications) |>
-#  Strategus::addModuleSpecifications(selfControlledModuleSpecifications) |>
-#  Strategus::addModuleSpecifications(plpModuleSpecifications)
+  Strategus::addModuleSpecifications(cohortMethodModuleSpecifications) 
 
 ParallelLogger::saveSettingsToJson(
   analysisSpecifications, 

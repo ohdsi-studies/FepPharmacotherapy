@@ -70,26 +70,24 @@ CohortGenerator::saveCohortDefinitionSet(
   sqlFolder = "inst/sql/sql_server",
 )
 
-# Download and save the negative control outcomes
-# TODO: create a negative controls concept set
-#negativeControlOutcomeCohortSet <- ROhdsiWebApi::getConceptSetDefinition(
-#  conceptSetId = 1885090,
-#  baseUrl = baseUrl
-#) %>%
-#  ROhdsiWebApi::resolveConceptSet(
-#    baseUrl = baseUrl
-#  ) %>%
-#  ROhdsiWebApi::getConcepts(
-#    baseUrl = baseUrl
-#  ) %>%
-#  rename(outcomeConceptId = "conceptId",
-#         cohortName = "conceptName") %>%
-#  mutate(cohortId = row_number() + 100) %>%
-#  select(cohortId, cohortName, outcomeConceptId)
+no_df <- data.frame(
+  origin = c("cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem/htn", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "cem", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn", "htn"),
+  conceptId = c(439935, 443585, 4092879, 45757682, 81878, 4216219, 134765, 4201390, 434675, 436077, 377910, 4170770, 437448, 4092896, 374801, 4096540, 439788, 40481632, 4168318, 374375, 40481897, 4265896, 381021, 4027782, 433997, 4051630, 258540, 432798, 439795, 4209423, 40480893, 438130, 4299094, 437092, 433951, 4019836, 432436, 433244, 436876, 440612, 4201387, 45757285, 436409, 199192, 4088290, 75911, 137951, 73241, 133655, 73560, 434327, 140842, 81378, 432303, 46269889, 134438, 78619, 201606, 76786, 4115402, 45757370, 433111, 433527, 4092896, 259995, 40481632, 433577, 4231770, 4012570, 4012934, 374375, 4344500, 139099, 444132, 432593, 434203, 438329, 4083487, 4103703, 4209423, 377572, 136368, 40480893, 438130, 4091513, 4202045, 373478, 439790, 81634, 380706, 141932, 36713918, 443172, 81151, 72748, 378427, 437264, 140641, 4115367, 440193),
+  cohortId = c(1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040, 1041, 1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1063, 1064, 1065, 1066, 1067, 1068, 1069, 1070, 1071, 1072, 1073, 1074, 1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086, 1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100),
+  name = c("Abnormal posture", "Abrasion and/or friction burn of multiple sites", "Absent kidney", "Anomaly of jaw size", "Benign paroxysmal positional vertigo", "Bizarre personal appearance", "Cachexia", "Colostomy present", "Complication of gastrostomy", "Developmental delay", "Deviated nasal septum", "Epidermoid cyst", "Exhaustion due to excessive exertion", "Feces contents abnormal", "Foreign body in ear", "Foreskin deficient", "Galactosemia", "Ganglion cyst", "Genetic disorder carrier", "Impacted cerumen", "Inadequate sleep hygiene", "Jellyfish poisoning", "Lagophthalmos", "Lipid storage disease", "Lymphangioma", "Malingering", "Marfan's syndrome", "Mechanical complication of internal orthopedic device, implant AND/OR graft", "Minimal cognitive impairment", "Nicotine dependence", "Nonspecific tuberculin test reaction", "Opioid abuse", "Opioid intoxication", "Physiological development failure", "Poisoning by tranquilizer", "Social exclusion", "Symbolic dysfunction", "Tooth loss", "Toxic effect of lead compound", "Toxic effect of tobacco and nicotine", "Tracheostomy present", "Unsatisfactory tooth restoration", "Abnormal pupil", "Abrasion and/or friction burn of trunk without infection", "Absence of breast", "Acquired hallux valgus", "Acquired keratoderma", "Anal and rectal polyp", "Burn of forearm", "Calcaneal spur", "Cannabis abuse", "Changes in skin texture", "Chondromalacia of patella", "Cocaine abuse", "Complication due to Crohn's disease", "Contact dermatitis", "Contusion of knee", "Crohn's disease", "Derangement of knee", "Difficulty sleeping", "Disproportion of reconstructed breast", "Effects of hunger", "Endometriosis", "Feces contents abnormal", "Foreign body in orifice", "Ganglion cyst", "Hammer toe", "Hereditary thrombophilia", "High risk sexual behavior", "Homocystinuria", "Impacted cerumen", "Impingement syndrome of shoulder region", "Ingrowing nail", "Injury of knee", "Kwashiorkor", "Late effect of contusion", "Late effect of motor vehicle accident", "Macular drusen", "Melena", "Nicotine dependence", "Noise effects on inner ear", "Non-toxic multinodular goiter", "Nonspecific tuberculin test reaction", "Opioid abuse", "Passing flatus", "Postviral fatigue syndrome", "Presbyopia", "Psychalgia", "Ptotic breast", "Regular astigmatism", "Senile hyperkeratosis", "Somatic dysfunction of lumbar region", "Splinter of face without major open wound", "Sprain of ankle", "Strain of rotator cuff capsule", "Tear film insufficiency", "Tobacco dependence syndrome", "Verruca vulgaris", "Wrist joint pain", "Wristdrop")
+) |> filter(
+  ! conceptId %in% c(
+    4216219, 134765, 40481897, 4209423, 438130, 4299094, 433951, 4019836, 440612, 434327, 432303, 4115402, 4012570, 439790, 437264
+  )
+  
+)
+CohortGenerator::writeCsv(
+ x = no_df |> 
+   select(
+     cohortId, cohortName = name, outcomeConceptId = conceptId
+   ),
+ file = "inst/negativeControlOutcomes.csv",
+ warnOnFileNameCaseMismatch = F
+)
 
-# NOTE: Update file location for your study.
-#CohortGenerator::writeCsv(
-#  x = negativeControlOutcomeCohortSet,
-#  file = "inst/sampleStudy/negativeControlOutcomes.csv",
-#  warnOnFileNameCaseMismatch = F
-#)
+

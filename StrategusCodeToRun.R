@@ -16,11 +16,13 @@
 Sys.setenv("_JAVA_OPTIONS"="-Xmx4g") # Sets the Java maximum heap space to 4GB
 Sys.setenv("VROOM_THREADS"=1) # Sets the number of threads to 1 to avoid deadlocks on file system
 
+
 ##=========== START OF INPUTS ==========
-cdmDatabaseSchema <- "main"
-workDatabaseSchema <- "main"
+
+cdmDatabaseSchema <- "cdm_531"
+workDatabaseSchema <- "alex_alexeyuk_results"
 outputLocation <- file.path(getwd(), "results")
-databaseName <- "Eunomia" # Only used as a folder name for results from the study
+databaseName <- "synpuf" # Only used as a folder name for results from the study
 minCellCount <- 5
 cohortTableName <- "sample_study"
 
@@ -39,7 +41,13 @@ cohortTableName <- "sample_study"
 # can install this by running:
 #
 # install.packages("Eunomia")
-connectionDetails <- Eunomia::getEunomiaConnectionDetails()
+connectionDetails <- DatabaseConnector::createConnectionDetails(
+  dbms = "postgresql",
+  server = Sys.getenv("SERVER"),
+  user = Sys.getenv("DB_USER"),
+  password = Sys.getenv("DB_PASSWORD"),
+  port = "5441"
+)
 
 # You can use this snippet to test your connection
 #conn <- DatabaseConnector::connect(connectionDetails)
@@ -47,7 +55,7 @@ connectionDetails <- Eunomia::getEunomiaConnectionDetails()
 
 ##=========== END OF INPUTS ==========
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/sampleStudy/sampleStudyAnalysisSpecification.json"
+  fileName = "inst/FepPharmacotherapyAnalysisSpecification.json"
 )
 
 executionSettings <- Strategus::createCdmExecutionSettings(

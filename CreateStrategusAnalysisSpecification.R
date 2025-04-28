@@ -37,7 +37,7 @@ studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", study
 
 # Consider these settings for estimation  ----------------------------------------
 
-useCleanWindowForPriorOutcomeLookback <- FALSE # If FALSE, lookback window is all time prior, i.e., including only first events
+useCleanWindowForPriorOutcomeLookback <- TRUE # Clean window is set to 0, because outcome of interest is a relapse
 psMatchMaxRatio <- 1 # If bigger than 1, the outcome model will be conditioned on the matched set
 
 # Shared Resources -------------------------------------------------------------
@@ -61,14 +61,13 @@ negativeControlOutcomeCohortSet <- CohortGenerator::readCsv(
 
 # Create some data frames to hold the cohorts we'll use in each analysis ---------------
 # Outcomes: The outcome for this study is cohort_id == 10
-# TODO: Check if CLeanWindow is correct
 oList <- cohortDefinitionSet |>
   filter(cohortId == 10) |>
   mutate(
     outcomeCohortId = cohortId, 
     outcomeCohortName = cohortName) |>
   select(outcomeCohortId, outcomeCohortName) |>
-  mutate(cleanWindow = 365)
+  mutate(cleanWindow = 0)
 
 ingredients <- tibble(
   conceptId = c(735979, 766529, 757688, 46275300, 
@@ -136,7 +135,6 @@ cohortDiagnosticsModuleSpecifications <- cdModuleSettingsCreator$createModuleSpe
 
 
 # CohortMethodModule -----------------------------------------------------------
-# and try to do it in a loop for each respective analysis
 cmModuleSettingsCreator <- CohortMethodModule$new()
 covariateSettings <- FeatureExtraction::createDefaultCovariateSettings(
   excludedCovariateConceptIds = excludedCovariateConcepts$conceptId
@@ -214,7 +212,6 @@ computeCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(
   maxCohortSize = 250000,
   covariateFilter = FeatureExtraction::getDefaultTable1Specifications()
 )
-# TODO: check the parameters
 fitOutcomeModelArgs = CohortMethod::createFitOutcomeModelArgs(
   modelType = "cox",
   stratified = FALSE,

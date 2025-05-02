@@ -50,7 +50,7 @@
         {
           "cohortId": 10,
           "cohortName": "rehospitalization",
-          "cohortDefinition": "{\r\n\t\"cdmVersionRange\" : \">=5.0.0\",\r\n\t\"PrimaryCriteria\" : {\r\n\t\t\"CriteriaList\" : [\r\n\t\t\t{\r\n\t\t\t\t\"VisitOccurrence\" : {\r\n\t\t\t\t\t\"CorrelatedCriteria\" : {\r\n\t\t\t\t\t\t\"Type\" : \"ALL\",\r\n\t\t\t\t\t\t\"CriteriaList\" : [\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\"Criteria\" : {\r\n\t\t\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"CodesetId\" : 3\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"StartWindow\" : {\r\n\t\t\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\r\n\t\t\t\t\t\t\t\t\t\"UseEventEnd\" : false\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"EndWindow\" : {\r\n\t\t\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"UseIndexEnd\" : true,\r\n\t\t\t\t\t\t\t\t\t\"UseEventEnd\" : false\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"RestrictVisit\" : false,\r\n\t\t\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\r\n\t\t\t\t\t\t\t\t\"Occurrence\" : {\r\n\t\t\t\t\t\t\t\t\t\"Type\" : 2,\r\n\t\t\t\t\t\t\t\t\t\"Count\" : 1,\r\n\t\t\t\t\t\t\t\t\t\"IsDistinct\" : false\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t],\r\n\t\t\t\t\t\t\"DemographicCriteriaList\" : [],\r\n\t\t\t\t\t\t\"Groups\" : []\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"CodesetId\" : 0,\r\n\t\t\t\t\t\"VisitTypeExclude\" : false\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t],\r\n\t\t\"ObservationWindow\" : {\r\n\t\t\t\"PriorDays\" : 0,\r\n\t\t\t\"PostDays\" : 0\r\n\t\t},\r\n\t\t\"PrimaryCriteriaLimit\" : {\r\n\t\t\t\"Type\" : \"First\"\r\n\t\t}\r\n\t},\r\n\t\"ConceptSets\" : [\r\n\t\t{\r\n\t\t\t\"id\" : 0,\r\n\t\t\t\"name\" : \"[GDE2025] SCH Inpatient Visit & ER\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"items\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 9201,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Inpatient Visit\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"IP\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 262,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emergency Room and Inpatient Visit\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"ERIP\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\" : 2,\r\n\t\t\t\"name\" : \"[GDE2025] SCH FEP source codes for exclusion\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"items\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402410,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, mild, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.A2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402418,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, moderate, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.B2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402426,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, severe, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.C2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402402,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, unspecified severity, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.82\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402439,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, mild, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.A2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402447,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, moderate, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.B2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402455,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, severe, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.C2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402432,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, unspecified severity, with mood disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.93\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402431,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, unspecified severity, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.92\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402381,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, mild, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.A2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402391,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, moderate, with anxiety\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.B4\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402389,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, moderate, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.B2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402397,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, severe, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.C2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402373,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, unspecified severity, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.52\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\" : 3,\r\n\t\t\t\"name\" : \"[GDE2025] SCH First-episode psychosis\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"items\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 436073,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychotic disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"69322001\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 434900,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Drug-induced psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"191483003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4067987,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Opioid-induced psychotic disorder with delusions\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"20385005\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4100247,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Organic psychotic condition\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"191447007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35622934,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychosis and severe depression co-occurrent and due to bipolar affective disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"765176007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 432590,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Delusional disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"48500005\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35610112,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Mania with psychotic features\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1089681000000108\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4250023,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe major depression with psychotic features\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"73867007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 443559,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Drug-induced delusional disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"427975003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 375229,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Organic delusional disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"5510009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4057246,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Postpartum psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"18260003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 44782771,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Presenile dementia with delusions\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"31081000119101\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 380986,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Senile dementia with delusion\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"371024007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4154309,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe recurrent major depression with psychotic features\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"28475009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4141292,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe recurrent major depression with psychotic features, mood-congruent\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"33078009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4034842,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe recurrent major depression with psychotic features, mood-incongruent\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"15193003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 434010,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Schizotypal personality disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"31027006\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 36714473,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychosis co-occurrent and due to Parkinson's disease\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"719717006\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35609824,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Recurrent reactive depressive episodes, severe, with psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1086471000000103\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4322477,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe bipolar disorder with psychotic features, mood-congruent\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"70546001\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35609901,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Late onset substance-induced psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1087461000000107\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3187953,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Postictal psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"12920001000004106\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Nebraska Lexicon\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 45757162,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychotic disorder in mother complicating childbirth\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"10760421000119102\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 45757163,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychotic disorder in mother complicating pregnancy\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"10760461000119107\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4030431,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Symbiotic infantile psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"129602009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t],\r\n\t\"QualifiedLimit\" : {\r\n\t\t\"Type\" : \"First\"\r\n\t},\r\n\t\"ExpressionLimit\" : {\r\n\t\t\"Type\" : \"First\"\r\n\t},\r\n\t\"InclusionRules\" : [\r\n\t\t{\r\n\t\t\t\"name\" : \"Exclude SCs non-excludable otherwise\",\r\n\t\t\t\"description\" : \"Exclude ICD10CM codes for dementia mapped to psychotic disorder\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"Type\" : \"ALL\",\r\n\t\t\t\t\"CriteriaList\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"Criteria\" : {\r\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\r\n\t\t\t\t\t\t\t\t\"CodesetId\" : 3,\r\n\t\t\t\t\t\t\t\t\"ConditionSourceConcept\" : 2\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"StartWindow\" : {\r\n\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\r\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"EndWindow\" : {\r\n\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"UseIndexEnd\" : true,\r\n\t\t\t\t\t\t\t\"UseEventEnd\" : true\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"RestrictVisit\" : false,\r\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\r\n\t\t\t\t\t\t\"Occurrence\" : {\r\n\t\t\t\t\t\t\t\"Type\" : 0,\r\n\t\t\t\t\t\t\t\"Count\" : 0,\r\n\t\t\t\t\t\t\t\"IsDistinct\" : false\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t],\r\n\t\t\t\t\"DemographicCriteriaList\" : [],\r\n\t\t\t\t\"Groups\" : []\r\n\t\t\t}\r\n\t\t}\r\n\t],\r\n\t\"CensoringCriteria\" : [],\r\n\t\"CollapseSettings\" : {\r\n\t\t\"CollapseType\" : \"ERA\",\r\n\t\t\"EraPad\" : 0\r\n\t},\r\n\t\"CensorWindow\" : {}\r\n}"
+          "cohortDefinition": "{\r\n\t\"cdmVersionRange\" : \">=5.0.0\",\r\n\t\"PrimaryCriteria\" : {\r\n\t\t\"CriteriaList\" : [\r\n\t\t\t{\r\n\t\t\t\t\"VisitOccurrence\" : {\r\n\t\t\t\t\t\"CorrelatedCriteria\" : {\r\n\t\t\t\t\t\t\"Type\" : \"ALL\",\r\n\t\t\t\t\t\t\"CriteriaList\" : [\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\"Criteria\" : {\r\n\t\t\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"CodesetId\" : 4\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"StartWindow\" : {\r\n\t\t\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\r\n\t\t\t\t\t\t\t\t\t\"UseEventEnd\" : false\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"EndWindow\" : {\r\n\t\t\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\t\"UseIndexEnd\" : true,\r\n\t\t\t\t\t\t\t\t\t\"UseEventEnd\" : false\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"RestrictVisit\" : false,\r\n\t\t\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\r\n\t\t\t\t\t\t\t\t\"Occurrence\" : {\r\n\t\t\t\t\t\t\t\t\t\"Type\" : 2,\r\n\t\t\t\t\t\t\t\t\t\"Count\" : 1,\r\n\t\t\t\t\t\t\t\t\t\"IsDistinct\" : false\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t],\r\n\t\t\t\t\t\t\"DemographicCriteriaList\" : [],\r\n\t\t\t\t\t\t\"Groups\" : []\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"CodesetId\" : 0,\r\n\t\t\t\t\t\"VisitTypeExclude\" : false\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t],\r\n\t\t\"ObservationWindow\" : {\r\n\t\t\t\"PriorDays\" : 0,\r\n\t\t\t\"PostDays\" : 0\r\n\t\t},\r\n\t\t\"PrimaryCriteriaLimit\" : {\r\n\t\t\t\"Type\" : \"First\"\r\n\t\t}\r\n\t},\r\n\t\"ConceptSets\" : [\r\n\t\t{\r\n\t\t\t\"id\" : 0,\r\n\t\t\t\"name\" : \"[GDE2025] SCH Inpatient Visit & ER\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"items\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 9201,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Inpatient Visit\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"IP\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 262,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emergency Room and Inpatient Visit\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"ERIP\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\" : 2,\r\n\t\t\t\"name\" : \"[GDE2025] SCH FEP source codes for exclusion\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"items\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402410,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, mild, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.A2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402418,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, moderate, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.B2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402426,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, severe, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.C2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402402,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Dementia in other diseases classified elsewhere, unspecified severity, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F02.82\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402439,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, mild, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.A2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402447,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, moderate, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.B2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402455,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, severe, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.C2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402432,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, unspecified severity, with mood disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.93\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402431,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Unspecified dementia, unspecified severity, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F03.92\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402381,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, mild, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.A2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402391,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, moderate, with anxiety\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.B4\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402389,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, moderate, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.B2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402397,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, severe, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.C2\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 37402373,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Vascular dementia, unspecified severity, with psychotic disturbance\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"N\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Non-Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F01.52\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"ICD10CM\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"5-char billing code\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : false,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\" : 4,\r\n\t\t\t\"name\" : \"[GDE 2025] SCH Outcome psychosis relapse\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"items\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 436073,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychotic disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"69322001\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 434900,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Drug-induced psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"191483003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4067987,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Opioid-induced psychotic disorder with delusions\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"20385005\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4100247,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Organic psychotic condition\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"191447007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35622934,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychosis and severe depression co-occurrent and due to bipolar affective disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"765176007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 432590,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Delusional disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"48500005\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 443559,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Drug-induced delusional disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"427975003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 375229,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Organic delusional disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"5510009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4057246,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Postpartum psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"18260003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 44782771,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Presenile dementia with delusions\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"31081000119101\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 380986,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Senile dementia with delusion\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"371024007\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4154309,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe recurrent major depression with psychotic features\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"28475009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4141292,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe recurrent major depression with psychotic features, mood-congruent\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"33078009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4034842,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe recurrent major depression with psychotic features, mood-incongruent\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"15193003\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 434010,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Schizotypal personality disorder\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"31027006\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : false,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 36714473,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychosis co-occurrent and due to Parkinson's disease\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"719717006\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35609824,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Recurrent reactive depressive episodes, severe, with psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1086471000000103\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4322477,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Severe bipolar disorder with psychotic features, mood-congruent\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"70546001\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 35609901,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Late onset substance-induced psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"1087461000000107\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3187953,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Postictal psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"12920001000004106\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Nebraska Lexicon\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 45757162,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychotic disorder in mother complicating childbirth\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"10760421000119102\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 45757163,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Psychotic disorder in mother complicating pregnancy\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"10760461000119107\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"concept\" : {\r\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4030431,\r\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Symbiotic infantile psychosis\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\r\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\r\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"129602009\",\r\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\r\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\r\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Disorder\"\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"isExcluded\" : true,\r\n\t\t\t\t\t\t\"includeDescendants\" : true,\r\n\t\t\t\t\t\t\"includeMapped\" : false\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t],\r\n\t\"QualifiedLimit\" : {\r\n\t\t\"Type\" : \"First\"\r\n\t},\r\n\t\"ExpressionLimit\" : {\r\n\t\t\"Type\" : \"First\"\r\n\t},\r\n\t\"InclusionRules\" : [\r\n\t\t{\r\n\t\t\t\"name\" : \"Exclude SCs non-excludable otherwise\",\r\n\t\t\t\"description\" : \"Exclude ICD10CM codes for dementia mapped to psychotic disorder\",\r\n\t\t\t\"expression\" : {\r\n\t\t\t\t\"Type\" : \"ALL\",\r\n\t\t\t\t\"CriteriaList\" : [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"Criteria\" : {\r\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\r\n\t\t\t\t\t\t\t\t\"ConditionSourceConcept\" : 2\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"StartWindow\" : {\r\n\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\r\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"EndWindow\" : {\r\n\t\t\t\t\t\t\t\"Start\" : {\r\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"End\" : {\r\n\t\t\t\t\t\t\t\t\"Days\" : 0,\r\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"UseIndexEnd\" : true,\r\n\t\t\t\t\t\t\t\"UseEventEnd\" : true\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"RestrictVisit\" : false,\r\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\r\n\t\t\t\t\t\t\"Occurrence\" : {\r\n\t\t\t\t\t\t\t\"Type\" : 0,\r\n\t\t\t\t\t\t\t\"Count\" : 0,\r\n\t\t\t\t\t\t\t\"IsDistinct\" : false\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t],\r\n\t\t\t\t\"DemographicCriteriaList\" : [],\r\n\t\t\t\t\"Groups\" : []\r\n\t\t\t}\r\n\t\t}\r\n\t],\r\n\t\"CensoringCriteria\" : [],\r\n\t\"CollapseSettings\" : {\r\n\t\t\"CollapseType\" : \"ERA\",\r\n\t\t\"EraPad\" : 0\r\n\t},\r\n\t\"CensorWindow\" : {}\r\n}"
         }
       ],
       "attr_class": ["CohortDefinitionSharedResources", "SharedResources"]
@@ -454,7 +454,7 @@
             "outcomeConceptId": "   72748"
           },
           {
-            "cohortId": "1096",
+            "cohortId": "1097",
             "cohortName": "Tear film insufficiency",
             "outcomeConceptId": "  378427"
           },
@@ -550,10 +550,10 @@
         "cmAnalysisList": [
           {
             "analysisId": 1,
-            "description": "Cohort method, 180 days after the first month",
+            "description": "Cohort method with matching on PS, 180 days after the first month",
             "getDbCohortMethodDataArgs": {
               "studyStartDate": "20171201",
-              "studyEndDate": "20124231",
+              "studyEndDate": "20231231",
               "firstExposureOnly": false,
               "removeDuplicateSubjects": "keep all",
               "restrictToCommonPeriod": false,
@@ -614,9 +614,9 @@
               "priorOutcomeLookback": 0,
               "minDaysAtRisk": 1,
               "maxDaysAtRisk": 99999,
-              "riskWindowStart": 30,
+              "riskWindowStart": 31,
               "startAnchor": "cohort start",
-              "riskWindowEnd": 210,
+              "riskWindowEnd": 211,
               "endAnchor": "cohort start",
               "censorAtNewRiskWindow": true,
               "attr_class": "args"
@@ -740,6 +740,197 @@
               "attr_class": "args"
             },
             "attr_class": "cmAnalysis"
+          },
+          {
+            "analysisId": 2,
+            "description": "Cohort method with stratification on PS, 180 days after the first month",
+            "getDbCohortMethodDataArgs": {
+              "studyStartDate": "20171201",
+              "studyEndDate": "20231231",
+              "firstExposureOnly": false,
+              "removeDuplicateSubjects": "keep all",
+              "restrictToCommonPeriod": false,
+              "washoutPeriod": 0,
+              "maxCohortSize": 0,
+              "covariateSettings": {
+                "temporal": false,
+                "temporalSequence": false,
+                "DemographicsGender": true,
+                "DemographicsAgeGroup": true,
+                "DemographicsRace": true,
+                "DemographicsEthnicity": true,
+                "DemographicsIndexYear": true,
+                "DemographicsIndexMonth": true,
+                "ConditionGroupEraLongTerm": true,
+                "ConditionGroupEraShortTerm": true,
+                "DrugGroupEraLongTerm": true,
+                "DrugGroupEraShortTerm": true,
+                "DrugGroupEraOverlapping": true,
+                "ProcedureOccurrenceLongTerm": true,
+                "ProcedureOccurrenceShortTerm": true,
+                "DeviceExposureLongTerm": true,
+                "DeviceExposureShortTerm": true,
+                "MeasurementLongTerm": true,
+                "MeasurementShortTerm": true,
+                "MeasurementRangeGroupLongTerm": true,
+                "MeasurementRangeGroupShortTerm": true,
+                "MeasurementValueAsConceptLongTerm": true,
+                "MeasurementValueAsConceptShortTerm": true,
+                "ObservationLongTerm": true,
+                "ObservationShortTerm": true,
+                "ObservationValueAsConceptLongTerm": true,
+                "ObservationValueAsConceptShortTerm": true,
+                "CharlsonIndex": true,
+                "Dcsi": true,
+                "Chads2": true,
+                "Chads2Vasc": true,
+                "includedCovariateConceptIds": [],
+                "includedCovariateIds": [],
+                "addDescendantsToInclude": false,
+                "excludedCovariateConceptIds": [735979, 766529, 757688, 46275300, 785788, 766814, 40137339, 703244],
+                "addDescendantsToExclude": false,
+                "shortTermStartDays": -30,
+                "mediumTermStartDays": -180,
+                "endDays": 0,
+                "longTermStartDays": -365,
+                "attr_class": "covariateSettings",
+                "attr_fun": "getDbDefaultCovariateData"
+              },
+              "attr_class": "args"
+            },
+            "createStudyPopArgs": {
+              "firstExposureOnly": false,
+              "restrictToCommonPeriod": false,
+              "washoutPeriod": 0,
+              "removeDuplicateSubjects": "keep all",
+              "removeSubjectsWithPriorOutcome": false,
+              "priorOutcomeLookback": 0,
+              "minDaysAtRisk": 1,
+              "maxDaysAtRisk": 99999,
+              "riskWindowStart": 31,
+              "startAnchor": "cohort start",
+              "riskWindowEnd": 211,
+              "endAnchor": "cohort start",
+              "censorAtNewRiskWindow": true,
+              "attr_class": "args"
+            },
+            "createPsArgs": {
+              "maxCohortSizeForFitting": 250000,
+              "errorOnHighCorrelation": true,
+              "stopOnError": false,
+              "prior": {
+                "priorType": "laplace",
+                "variance": 1,
+                "exclude": [735979, 766529, 757688, 46275300, 785788, 766814, 40137339, 703244],
+                "graph": null,
+                "neighborhood": null,
+                "useCrossValidation": true,
+                "forceIntercept": false,
+                "attr_class": "cyclopsPrior"
+              },
+              "control": {
+                "maxIterations": 1000,
+                "tolerance": 2e-07,
+                "convergenceType": "gradient",
+                "autoSearch": true,
+                "fold": 10,
+                "lowerLimit": 0.01,
+                "upperLimit": 20,
+                "gridSteps": 10,
+                "minCVData": 100,
+                "cvRepetitions": 1,
+                "noiseLevel": "silent",
+                "threads": 1,
+                "seed": 1,
+                "resetCoefficients": true,
+                "startingVariance": 0.01,
+                "useKKTSwindle": false,
+                "tuneSwindle": 10,
+                "selectorType": "auto",
+                "initialBound": 2,
+                "maxBoundCount": 5,
+                "algorithm": "ccd",
+                "doItAll": true,
+                "syncCV": false,
+                "attr_class": "cyclopsControl"
+              },
+              "estimator": "att",
+              "attr_class": "args"
+            },
+            "stratifyByPsArgs": {
+              "numberOfStrata": 5,
+              "baseSelection": "all",
+              "attr_class": "args"
+            },
+            "computeSharedCovariateBalanceArgs": {
+              "maxCohortSize": 250000,
+              "attr_class": "args"
+            },
+            "computeCovariateBalanceArgs": {
+              "maxCohortSize": 250000,
+              "covariateFilter": {
+                "label": ["Age group", "Gender: female", "Race", "Ethnicity", "Medical history: General", "Medical history: Cardiovascular disease", "Medical history: Neoplasms", "Medication use", "Charlson comorbidity index", "CHADS2Vasc", "DCSI"],
+                "analysisId": [3, 1, 4, 5, 210, 210, 210, 410, 901, 904, 902],
+                "covariateIds": [null, "8532001", null, null, "4006969210,438409210,4212540210,255573210,201606210,4182210210,440383210,201820210,318800210,192671210,439727210,432867210,316866210,4104000210,433736210,80180210,255848210,140168210,4030518210,80809210,435783210,4279309210,81893210,81902210,197494210,4134440210", "313217210,381591210,317576210,321588210,316139210,4185932210,321052210,440417210,444247210", "4044013210,432571210,40481902210,443392210,4112853210,4180790210,443388210,197508210,200962210", "21601782410,21602796410,21604686410,21604389410,21603932410,21601387410,21602028410,21600960410,21601664410,21601744410,21601461410,21600046410,21603248410,21600712410,21603890410,21601853410,21604254410,21604489410,21604752410", "1901", "1904", "1902"],
+                "attr_class": ["spec_tbl_df", "tbl_df", "tbl", "data.frame"],
+                "attr_row.names": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                "attr_spec": {
+                  "cols": {
+                    "label": [],
+                    "analysisId": [],
+                    "covariateIds": []
+                  },
+                  "default": [],
+                  "skip": 1
+                }
+              },
+              "attr_class": "args"
+            },
+            "fitOutcomeModelArgs": {
+              "modelType": "cox",
+              "stratified": false,
+              "useCovariates": false,
+              "inversePtWeighting": false,
+              "profileBounds": [-2.3026, 2.3026],
+              "prior": {
+                "priorType": "laplace",
+                "variance": 1,
+                "exclude": null,
+                "graph": null,
+                "neighborhood": null,
+                "useCrossValidation": true,
+                "forceIntercept": false,
+                "attr_class": "cyclopsPrior"
+              },
+              "control": {
+                "maxIterations": 1000,
+                "tolerance": 2e-07,
+                "convergenceType": "gradient",
+                "autoSearch": true,
+                "fold": 10,
+                "lowerLimit": 0.01,
+                "upperLimit": 20,
+                "gridSteps": 10,
+                "minCVData": 100,
+                "cvRepetitions": 1,
+                "noiseLevel": "quiet",
+                "threads": 1,
+                "seed": 1,
+                "resetCoefficients": true,
+                "startingVariance": 0.01,
+                "useKKTSwindle": false,
+                "tuneSwindle": 10,
+                "selectorType": "auto",
+                "initialBound": 2,
+                "maxBoundCount": 5,
+                "algorithm": "ccd",
+                "doItAll": true,
+                "syncCV": false,
+                "attr_class": "cyclopsControl"
+              },
+              "attr_class": "args"
+            },
+            "attr_class": "cmAnalysis"
           }
         ],
         "targetComparatorOutcomesList": [
@@ -751,6 +942,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -1307,7 +1502,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -1346,6 +1541,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -1902,7 +2101,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -1941,6 +2140,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -2497,7 +2700,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -2536,6 +2739,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -3092,7 +3299,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -3131,6 +3338,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -3687,7 +3898,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -3726,6 +3937,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -4282,7 +4497,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -4321,6 +4536,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -4877,7 +5096,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -4916,6 +5135,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -5472,7 +5695,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -5511,6 +5734,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -6067,7 +6294,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -6106,6 +6333,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -6662,7 +6893,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -6701,6 +6932,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -7257,7 +7492,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -7296,6 +7531,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -7852,7 +8091,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -7891,6 +8130,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -8447,7 +8690,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -8486,6 +8729,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -9042,7 +9289,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -9081,6 +9328,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -9637,7 +9888,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -9676,6 +9927,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -10232,7 +10487,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -10271,6 +10526,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -10827,7 +11086,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -10866,6 +11125,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -11422,7 +11685,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -11461,6 +11724,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -12017,7 +12284,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -12056,6 +12323,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -12612,7 +12883,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -12651,6 +12922,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -13207,7 +13482,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -13246,6 +13521,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -13802,7 +14081,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -13841,6 +14120,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -14397,7 +14680,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -14436,6 +14719,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -14992,7 +15279,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -15031,6 +15318,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -15587,7 +15878,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -15626,6 +15917,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -16182,7 +16477,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -16221,6 +16516,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -16777,7 +17076,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -16816,6 +17115,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -17372,7 +17675,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -17411,6 +17714,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -17967,7 +18274,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -18006,6 +18313,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -18562,7 +18873,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -18601,6 +18912,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -19157,7 +19472,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -19196,6 +19511,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -19752,7 +20071,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -19791,6 +20110,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -20347,7 +20670,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -20386,6 +20709,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -20942,7 +21269,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -20981,6 +21308,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -21537,7 +21868,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,
@@ -21576,6 +21907,10 @@
                 "outcomeId": 10,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
+                "riskWindowStart": 31,
+                "startAnchor": "cohort start",
+                "riskWindowEnd": 211,
+                "endAnchor": "cohort start",
                 "attr_class": "outcome"
               },
               {
@@ -22132,7 +22467,7 @@
                 "attr_class": "outcome"
               },
               {
-                "outcomeId": 1096,
+                "outcomeId": 1097,
                 "outcomeOfInterest": false,
                 "trueEffectSize": 1,
                 "priorOutcomeLookback": 99999,

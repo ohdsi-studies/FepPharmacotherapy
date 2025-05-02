@@ -22,13 +22,13 @@ SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 
 ) I
 ) C UNION ALL 
-SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (436073,432590,35610112,4250023,434010)
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (436073,432590,434010)
 UNION  select c.concept_id
   from @vocabulary_database_schema.CONCEPT c
   join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  and ca.ancestor_concept_id in (436073,432590,35610112,4250023,434010)
+  and ca.ancestor_concept_id in (436073,432590,434010)
   and c.invalid_reason is null
 
 ) I
@@ -130,7 +130,7 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 3)
+  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 4)
 ) C
 
 
@@ -192,8 +192,7 @@ FROM
 (
   SELECT co.person_id,co.condition_occurrence_id,co.condition_concept_id,co.visit_occurrence_id,co.condition_start_date as start_date, COALESCE(co.condition_end_date, DATEADD(day,1,co.condition_start_date)) as end_date 
   FROM @cdm_database_schema.CONDITION_OCCURRENCE co
-  JOIN #Codesets cs on (co.condition_concept_id = cs.concept_id and cs.codeset_id = 3)
-JOIN #Codesets cns on (co.condition_source_concept_id = cns.concept_id and cns.codeset_id = 2)
+  JOIN #Codesets cns on (co.condition_source_concept_id = cns.concept_id and cns.codeset_id = 2)
 ) C
 
 

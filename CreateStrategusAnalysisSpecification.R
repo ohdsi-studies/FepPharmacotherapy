@@ -19,9 +19,9 @@ library(Strategus)
 # Time-at-risks (TARs) for the outcomes of interest in your study
 timeAtRisks <- tibble(
   label = c("180 days after the first month"),
-  riskWindowStart  = c(30),
+  riskWindowStart  = c(31),
   startAnchor = c("cohort start"),
-  riskWindowEnd  = c(210),
+  riskWindowEnd  = c(211),
   endAnchor = c("cohort start")
 )
 
@@ -29,7 +29,7 @@ timeAtRisks <- tibble(
 # If you are not restricting your study to a specific time window, 
 # please make these strings empty
 studyStartDate <- '20171201' #YYYYMMDD
-studyEndDate <- '2024231'   #YYYYMMDD
+studyEndDate <- '20231231'   #YYYYMMDD
 # Some of the settings require study dates with hyphens
 studyStartDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyStartDate)
 studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", studyEndDate)
@@ -37,7 +37,7 @@ studyEndDateWithHyphens <- gsub("(\\d{4})(\\d{2})(\\d{2})", "\\1-\\2-\\3", study
 
 # Consider these settings for estimation  ----------------------------------------
 
-useCleanWindowForPriorOutcomeLookback <- TRUE # Clean window is set to 0, because outcome of interest is a relapse
+# useCleanWindowForPriorOutcomeLookback <- TRUE # Clean window is set to 0 and hardcoded, because outcome of interest is a relapse
 psMatchMaxRatio <- 1 # If bigger than 1, the outcome model will be conditioned on the matched set
 
 # Shared Resources -------------------------------------------------------------
@@ -102,7 +102,6 @@ analysisGrid <- tidyr::expand_grid(
 
 # For the CohortMethod LSPS we'll need to exclude the drugs of interest in this
 # study
-# TODO: Rewrite to create a df of all the concepts
 excludedCovariateConcepts <- ingredients
 
 # CohortGeneratorModule --------------------------------------------------------
@@ -143,7 +142,11 @@ outcomeList <- append(lapply(seq_len(nrow(oList)), function(i) {
   CohortMethod::createOutcome(
       outcomeId = oList$outcomeCohortId[i],
       outcomeOfInterest = TRUE,
-      trueEffectSize = NA
+      trueEffectSize = NA,
+      riskWindowStart  = c(31),
+      startAnchor = c("cohort start"),
+      riskWindowEnd  = c(211),
+      endAnchor = c("cohort start")
     )
   }),
   lapply(negativeControlOutcomeCohortSet$cohortId, function(i) {
@@ -233,6 +236,7 @@ fitOutcomeModelArgs = CohortMethod::createFitOutcomeModelArgs(
 )
 cmAnalysisList <- list()
 for (i in seq_len(nrow(timeAtRisks))) {
+#  Creating analysis parameters for matching on PS
   createStudyPopArgs <- CohortMethod::createCreateStudyPopulationArgs(
     firstExposureOnly = FALSE,
     removeDuplicateSubjects = "keep all",
@@ -249,14 +253,44 @@ for (i in seq_len(nrow(timeAtRisks))) {
   cmAnalysisList[[i]] <- CohortMethod::createCmAnalysis(
     analysisId = i,
     description = sprintf(
-      "Cohort method, %s",
+      "Cohort method with matching on PS, %s",
       timeAtRisks$label[i]
     ),
     getDbCohortMethodDataArgs = getDbCohortMethodDataArgs,
     createStudyPopArgs = createStudyPopArgs,
     createPsArgs = createPsArgs,
     matchOnPsArgs = matchOnPsArgs,
-    # stratifyByPsArgs = stratifyByPsArgs,
+    #stratifyByPsArgs = stratifyByPsArgs,
+    computeSharedCovariateBalanceArgs = computeSharedCovariateBalanceArgs,
+    computeCovariateBalanceArgs = computeCovariateBalanceArgs,
+    fitOutcomeModelArgs = fitOutcomeModelArgs
+  )
+#  Creating analysis parameters for stratifying by PS
+  i <- i + 1
+  createStudyPopArgsStrat <- CohortMethod::createCreateStudyPopulationArgs(
+    firstExposureOnly = FALSE,
+    removeDuplicateSubjects = "keep all",
+    censorAtNewRiskWindow = TRUE,
+    removeSubjectsWithPriorOutcome = FALSE,
+    priorOutcomeLookback = 0,
+    riskWindowStart = timeAtRisks$riskWindowStart[[1]],
+    startAnchor = timeAtRisks$startAnchor[[1]],
+    riskWindowEnd = timeAtRisks$riskWindowEnd[[1]],
+    endAnchor = timeAtRisks$endAnchor[[1]],
+    minDaysAtRisk = 1,
+    maxDaysAtRisk = 99999
+  )
+  cmAnalysisList[[i]] <- CohortMethod::createCmAnalysis(
+    analysisId = i,
+    description = sprintf(
+      "Cohort method with stratification on PS, %s",
+      timeAtRisks$label[1]
+    ),
+    getDbCohortMethodDataArgs = getDbCohortMethodDataArgs,
+    createStudyPopArgs = createStudyPopArgsStrat,
+    createPsArgs = createPsArgs,
+    #matchOnPsArgs = matchOnPsArgs,
+    stratifyByPsArgs = stratifyByPsArgs,
     computeSharedCovariateBalanceArgs = computeSharedCovariateBalanceArgs,
     computeCovariateBalanceArgs = computeCovariateBalanceArgs,
     fitOutcomeModelArgs = fitOutcomeModelArgs

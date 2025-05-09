@@ -3066,6 +3066,22 @@ AP
 Antipsychotic
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+TAR
+</td>
+<td style="text-align:left;">
+Time-at-Risk
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HADES
+</td>
+<td style="text-align:left;">
+Health Analytics Data-to-Evidence Suite
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3083,16 +3099,16 @@ Antipsychotic
 <div id="abstract" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Abstract</h1>
 <p><strong>Background and Significance</strong>:
-Schizophrenia is a severe neuropsychiatric disorder which often lead to a significant functional and cognitive impairment. Although its prevalence is relatively low [1], schizophrenia is one of the biggest causes of DALYs worldwide [2]. The term ‘first-episode schizophrenia’ is often used interchangeably with the term ‘first-episode psychosis’, since distinguishing former from the latter is a complex and often impossible clinical task, because clinical picture and further manifestations of the disorder may be multimodal and evolving. Studies show that interventions at the earliest stages of the disorder are important for ameliorating the course of illness [3, 4]. Treatment with antipsychotics is one of such interventions [5]. However, the choice of medication for treatment of FEP requires further investigation. Current clinical practice guidelines mention the heterogeneity of clinical trial designs and limited number of head-to-head comparisons as factors preventing from creating an evidence-based ranking of SGAs and FGAs [6].</p>
+Schizophrenia is a severe neuropsychiatric disorder which often lead to a significant functional and cognitive impairment. Although its prevalence is relatively low [1-3], schizophrenia is one of the biggest causes of Disability-Adjusted Life Years (DALYs) worldwide [4]. The term ‘first-episode schizophrenia’ is often used interchangeably with the term ‘first-episode psychosis’ (FEP), since distinguishing former from the latter is a complex and often impossible clinical task, because clinical picture and further manifestations of the disorder may be multimodal and evolving. Studies show that interventions at the earliest stages of the disorder are important for ameliorating the course of illness [5, 6]. Treatment with antipsychotics is one of such interventions [7]. However, the choice of medication for treatment of FEP requires further investigation. Current clinical practice guidelines mention the heterogeneity of clinical trial designs and limited number of head-to-head comparisons as factors preventing from creating an evidence-based ranking of second-generation antipsychotics (SGAs) and first-generation antipsychotics (FGAs) [8].</p>
 <p><strong>Study Aims</strong>:
 This study aims at creating a head-to-head comparison framework for the effectiveness several commonly used FGAs and SGAs when used in treating patients with first-episode psychoses.</p>
 <p><strong>Study Description</strong>:
-We will conduct a large-scale, systematic, observational study for each of the pairwise comparisons of 9 drugs of interest (Risperidone, Haloperidol, Aripiprazole, Brexpiprazole, Olanzapine, Quetiapine, Ziprazidone, Lurazidone, Paliperidone). This list includes the most common antipsychotic agents used for treatment of the first psychotic episode as per the results of OHDSI “Phenotype Phebruary 2025” initiative [7].</p>
+We will conduct a large-scale, systematic, observational study for each of the pairwise comparisons of 9 drugs of interest (Risperidone, Haloperidol, Aripiprazole, Brexpiprazole, Olanzapine, Quetiapine, Ziprazidone, Lurazidone, Paliperidone). This list includes the most common antipsychotic agents used for treatment of the first psychotic episode as per the results of OHDSI “Phenotype Phebruary 2025” initiative [9].</p>
 <ul>
 <li><p><strong>Population</strong>:
 Patients 18-40 years old experiencing a first-in-a-lifetime of psychotic episode, and with no record of treatment non-adherence during the diagnosis period who are first-time users of a specific AP. For a diagnosis setting, we will require either a recorded inpatient visit or 2 subsequent visits within 30 days. We will exclude patients who had a diagnosis of an organic or drug-induced mental disorder to control for diagnosis recording differences across datasets.</p></li>
 <li><p><strong>Comparators</strong>:
-We defined drugs by a respective ingredient or, in the case of Quetiapine, of a dose of 100 mg or more. First exposure to one of the drugs on the list will be an indexing event, and we will not allow for polypharmacotherapy with APs by censoring on exposure to any other AP unless it happens between the 2 visits requires in the “Population” section.</p></li>
+We defined drugs by a respective ingredient or, in the case of Quetiapine, of a dose of 100 mg or more. First exposure to one of the drugs on the list will be an indexing event, and we will not allow for polypharmacotherapy with antipsychotics (APs) by censoring on exposure to any other AP unless it happens between the 2 visits requires in the “Population” section.</p></li>
 <li><p><strong>Outcomes</strong>:
 We will use rehospitalization with a diagnosis of a psychotic disorder as a proxy for drug effectiveness. As mentioned above, relapse prevention is one of the key targets in treatment of first-episode psychosis. Rehospitalization as an outcome encompasses both inherent drug effectiveness as well as such factors as side effects influencing treatment adherence.</p></li>
 <li><p><strong>Design</strong>:
@@ -3109,45 +3125,85 @@ We will consider Time-at-Risk window to start from the 31st day from cohort star
 </div>
 <div id="rationale-and-background" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Rationale and Background</h1>
-<p>In the research field of psychiatry, measuring treatment effectiveness and outcomes and providing clinicians a clear roadmap for treatment are challenging tasks. This is, among other things, related to low perceived severity of the disorders, perceived treatment ineffectiveness and stigma among patients [8]. Such complications to the research process result in difficulties when stratifying treatment options in the clinical guidelines, giving the practitioners guidance on the general principles, but leading to inconsistent treatment and care patterns across the globe [9-11].
+<p>Schizophrenia is a severe neuropsychiatric disorder which often leads to a significant functional and cognitive impairment. Symptoms of schizophrenia include psychotic symptoms such as delusions, hallucinations, disorganized speech, grossly disorganized or catatonic behavior as well as negative symptoms (i.e., diminished emotional expression or avolition) [10]. Although the prevalence of schizophrenia is relatively low and estimates of the prevalence range between 0.33% to 0.75% [2, 3], schizophrenia is one of the biggest causes of DALYs worldwide [4].
+Schizophrenia usually begins at young ages and is typically persistent; the disorder can be severe and disabling. The term “First-episode psychosis” refers to the first occurrence of psychotic symptoms in a person’s life and later such persons may be diagnosed with schizophrenia, bipolar disorder with psychotic features, schizoaffective disorder, and substance-induced psychosis [11]. Concept of FEP allows clinicians to focus on early intervention without prematurely diagnosing schizophrenia, which requires a longer observation period to confirm.
+The first five years after the onset of FEP have a disproportionate long-term impact on the patient’s psychosocial functioning and wellbeing [12, 13].Studies show that interventions at the earliest stages of the disorder are important for ameliorating the course of illness [14, 15].
+Early interventions in FEP involve a combination of pharmacological and psychosocial treatments with the aim of preventing or limiting social, psychological and mental deterioration [16]. Treatment with antipsychotics is the main component of such interventions [17].
+However, the choice of medication for treatment of FEP requires further investigation. Current clinical practice guidelines mention the heterogeneity of clinical trial designs and limited number of head-to-head comparisons as factors preventing from creating an evidence-based ranking of SGAs and FGAs [8]. It is usually recommended to choose antipsychotic for treatment of FEP on the basis of side effect profile by using ‘start law go slow’ approach [18]. Some guidelines recommended second generation antipsychotics as initial treatment of FEP without indicating the superiority of any of them in terms of efficacy [19-22]. The recommended duration of antipsychotic treatment after FEP remains unresolved, some of the current guidelines recommended antipsychotic discontinuation after 1 to 2 years of treatment [23]. Maintenance treatment with antipsychotics after FEP reduces rates of hospitalizations, improves life expectancy and improves functional outcomes [24-26]
+In the research field of psychiatry, measuring treatment effectiveness and outcomes and providing clinicians a clear roadmap for treatment are challenging tasks. This is, among other things, related to low perceived severity of the disorders, perceived treatment ineffectiveness and stigma among patients [27]. Such complications to the research process result in difficulties when stratifying treatment options in the clinical guidelines, giving the practitioners guidance on the general principles, but leading to inconsistent treatment and care patterns across the globe [28-30].
 # Study Objectives</p>
 </div>
 <div id="research-methods" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Research Methods</h1>
 <div id="study-design" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Study Design</h2>
-<p>This study uses <code>CohortMethod</code> <span class="citation">[<a href="#ref-Schuemie2020-fa">1</a>]</span>.</p>
+FEP2 will be a systematic, large-scale observational study of antipsychotic agents to estimate the relative risk of rehospitalization with a diagnosis of a psychotic disorder. Table 3 demonstrates the 36 pairwise comparisons of 9 APs assessed.
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+Haloperidol
+</td>
+<td style="text-align:left;">
+Risperidone
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haloperidol
+</td>
+<td style="text-align:left;">
+Olanzapine
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haloperidol
+</td>
+<td style="text-align:left;">
+Quetiapine 100 mg/day and above
+</td>
+</tr>
+</tbody>
+</table>
+<p>For each of the target-comparator pairs, we will employ a new-user cohort design, which is advocated as the primary design to be considered for comparative effectiveness and drug safety [31]. We will be using first-in-a-lifetime drug exposure to one of the APs of interest as an indexing event for cohort entry.
+Here and below, when mentioning a diagnosis of a psychotic disorder, we will refer to a set of diagnoses that includes all the psychotic disorders and non-chronic affective disorders with psychotic symptoms, and specifically excludes organic and drug-induced psychoses.
+We will be limiting patients entering the cohort to those aged 18-40, who have been diagnosed with a psychotic disorder in an inpatient setting once or in an outpatient setting twice within 30 days prior. We excluded patients who had any other prior diagnoses of a psychotic disorder or any prior exposure to AP. To control for the effect disorder itself can have on treatment compliance, we excluded patients for whom non-compliance to treatment was recorded within the diagnosis period.
+To control for cases of polypharmacotherapy and prescription of several APs, we will be censoring on exposure to any other AP except the one used in an index event.
+We will be assessing outcomes within TAR of 180 days, starting on the 31st day after cohort start. This is intended to filter out the patients who were censored due to AP change too early, signifying a potential unreliable record.</p>
 </div>
 <div id="data-sources" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Data Sources</h2>
+<p>We will execute FEP2 as an OHDSI network study. All the Data Partners within OHDSI community are invited to participate. The transparency of the study is ensured by clear communication in the OHDSI Microsoft Teams environment and open access to the study repository on OHDSI Studies GitHub.</p>
 </div>
 <div id="study-population" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Study Population</h2>
+<p>The study population will include all patients qualifying for the cohort definition described above. In addition, we require a minimum of 365 days of prior continuous observation. Since the study assesses the risk of a relapse, we will not be setting a clean window for prior outcome lookback.</p>
 </div>
 <div id="exposure-comparators" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Exposure Comparators</h2>
+<p>The definitions of all the comparator cohorts follow the principles outlined in the “Study Design” section above. Visual representation of a cohort definition is in Figure 1.</p>
 </div>
 <div id="outcomes" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Outcomes</h2>
 </div>
 <div id="analysis" class="section level2" number="7.6">
 <h2><span class="header-section-number">7.6</span> Analysis</h2>
+<p>We will be using several of the OHDSI HADES packages. First, each participating dataset will be examined using the CohortDiagnostics package [32]. Then, the study itself will be run using the CorohtMethod package [33].<br />
+# Sample Size and Study Power {#sample-size}</p>
 </div>
 </div>
-<div id="sample-size" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Sample Size and Study Power</h1>
+<div id="strengths-limitations" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Strengths and Limitations</h1>
 </div>
-<div id="strengths-limitations" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Strengths and Limitations</h1>
+<div id="protection-of-human-subjects" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Protection of Human Subjects</h1>
 </div>
-<div id="protection-of-human-subjects" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Protection of Human Subjects</h1>
+<div id="management-and-reporting-of-adverse-events-and-adverse-reactions" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Management and Reporting of Adverse Events and Adverse Reactions</h1>
 </div>
-<div id="management-and-reporting-of-adverse-events-and-adverse-reactions" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> Management and Reporting of Adverse Events and Adverse Reactions</h1>
-</div>
-<div id="plans-for-disseminating-and-communicating-study-results" class="section level1" number="12">
-<h1><span class="header-section-number">12</span> Plans for Disseminating and Communicating Study Results</h1>
+<div id="plans-for-disseminating-and-communicating-study-results" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Plans for Disseminating and Communicating Study Results</h1>
 
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -3167,7 +3223,7 @@ Moreno-Küstner B, Martín C, Pastor L. Prevalence of psychotic disorders and it
 2
 </td>
 <td style="text-align:left;">
-GBD 2019 Mental Disorders Collaborators. Global, regional, and national burden of 12 mental disorders in 204 countries and territories, 1990-2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet Psychiatry. 2022;9(2):137-150. <a href="doi:10.1016/S2215-0366(21)00395-3" class="uri">doi:10.1016/S2215-0366(21)00395-3</a>
+Saha S, Chant D, Welham J, McGrath J. A systematic review of the prevalence of schizophrenia. PLoS Med. 2005 May;2(5):e141. PMID: 15916472
 </td>
 </tr>
 <tr>
@@ -3175,7 +3231,7 @@ GBD 2019 Mental Disorders Collaborators. Global, regional, and national burden o
 3
 </td>
 <td style="text-align:left;">
-Nordentoft M, Rasmussen JO, Melau M, Hjorthøj CR, Thorup AA. How successful are first episode programs? A review of the evidence for specialized assertive early intervention. Curr Opin Psychiatry. 2014;27(3):167-172. <a href="doi:10.1097/YCO.0000000000000052" class="uri">doi:10.1097/YCO.0000000000000052</a>
+Moreno-Küstner B, Martín C, Pastor L. Prevalence of psychotic disorders and its association with methodological issues. A systematic review and meta-analyses. PLoS One. 2018;13(4):e0195687. PMID: 29649252
 </td>
 </tr>
 <tr>
@@ -3183,7 +3239,7 @@ Nordentoft M, Rasmussen JO, Melau M, Hjorthøj CR, Thorup AA. How successful are
 4
 </td>
 <td style="text-align:left;">
-Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Services vs Treatment as Usual for Early-Phase Psychosis: A Systematic Review, Meta-analysis, and Meta-regression. JAMA Psychiatry. 2018;75(6):555-565. <a href="doi:10.1001/jamapsychiatry.2018.0623" class="uri">doi:10.1001/jamapsychiatry.2018.0623</a>
+GBD 2019 Mental Disorders Collaborators. Global, regional, and national burden of 12 mental disorders in 204 countries and territories, 1990-2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet Psychiatry. 2022;9(2):137-150. <a href="doi:10.1016/S2215-0366(21)00395-3" class="uri">doi:10.1016/S2215-0366(21)00395-3</a>].
 </td>
 </tr>
 <tr>
@@ -3191,7 +3247,7 @@ Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Service
 5
 </td>
 <td style="text-align:left;">
-Alvarez-Jiménez M, Parker AG, Hetrick SE, McGorry PD, Gleeson JF. Preventing the second episode: a systematic review and meta-analysis of psychosocial and pharmacological trials in first-episode psychosis. Schizophr Bull. 2011;37(3):619-630. <a href="doi:10.1093/schbul/sbp129" class="uri">doi:10.1093/schbul/sbp129</a>
+Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Services vs Treatment as Usual for Early-Phase Psychosis: A Systematic Review, Meta-analysis, and Meta-regression. JAMA Psychiatry. 2018;75(6):555-565. <a href="doi:10.1001/jamapsychiatry.2018.0623" class="uri">doi:10.1001/jamapsychiatry.2018.0623</a>
 </td>
 </tr>
 <tr>
@@ -3199,7 +3255,7 @@ Alvarez-Jiménez M, Parker AG, Hetrick SE, McGorry PD, Gleeson JF. Preventing th
 6
 </td>
 <td style="text-align:left;">
-Keepers GA, Fochtmann LJ, Anzia JM, et al. The American Psychiatric Association Practice Guideline for the Treatment of Patients With Schizophrenia. Am J Psychiatry. 2020;177(9):868-872. <a href="doi:10.1176/appi.ajp.2020.177901" class="uri">doi:10.1176/appi.ajp.2020.177901</a>
+Nordentoft M, Rasmussen JO, Melau M, Hjorthøj CR, Thorup AA. How successful are first episode programs? A review of the evidence for specialized assertive early intervention. Curr Opin Psychiatry. 2014;27(3):167-172. <a href="doi:10.1097/YCO.0000000000000052" class="uri">doi:10.1097/YCO.0000000000000052</a>
 </td>
 </tr>
 <tr>
@@ -3207,7 +3263,7 @@ Keepers GA, Fochtmann LJ, Anzia JM, et al. The American Psychiatric Association
 7
 </td>
 <td style="text-align:left;">
-<a href="https://results.ohdsi.org/app/26_PhenotypePhebruary2025" class="uri">https://results.ohdsi.org/app/26_PhenotypePhebruary2025</a>
+Alvarez-Jiménez M, Parker AG, Hetrick SE, McGorry PD, Gleeson JF. Preventing the second episode: a systematic review and meta-analysis of psychosocial and pharmacological trials in first-episode psychosis. Schizophr Bull. 2011;37(3):619-630. <a href="doi:10.1093/schbul/sbp129" class="uri">doi:10.1093/schbul/sbp129</a>
 </td>
 </tr>
 <tr>
@@ -3215,7 +3271,7 @@ Keepers GA, Fochtmann LJ, Anzia JM, et al. The American Psychiatric Association
 8
 </td>
 <td style="text-align:left;">
-Viana MC, Kazdin AE, Harris MG, et al. Barriers to 12-month treatment of common anxiety, mood, and substance use disorders in the World Mental Health (WMH) surveys. Int J Ment Health Syst. 2025;19(1):6. Published 2025 Feb 9. <a href="doi:10.1186/s13033-024-00658-2" class="uri">doi:10.1186/s13033-024-00658-2</a>
+Keepers GA, Fochtmann LJ, Anzia JM, et al. The American Psychiatric Association Practice Guideline for the Treatment of Patients With Schizophrenia. Am J Psychiatry. 2020;177(9):868-872. <a href="doi:10.1176/appi.ajp.2020.177901" class="uri">doi:10.1176/appi.ajp.2020.177901</a>
 </td>
 </tr>
 <tr>
@@ -3223,7 +3279,7 @@ Viana MC, Kazdin AE, Harris MG, et al. Barriers to 12-month treatment of common
 9
 </td>
 <td style="text-align:left;">
-Vigo DV, Stein DJ, Harris MG, et al. Effective Treatment for Mental and Substance Use Disorders in 21 Countries. JAMA Psychiatry. 2025;82(4):347-357. <a href="doi:10.1001/jamapsychiatry.2024.4378" class="uri">doi:10.1001/jamapsychiatry.2024.4378</a>
+<a href="https://results.ohdsi.org/app/26_PhenotypePhebruary2025" class="uri">https://results.ohdsi.org/app/26_PhenotypePhebruary2025</a>
 </td>
 </tr>
 <tr>
@@ -3231,7 +3287,7 @@ Vigo DV, Stein DJ, Harris MG, et al. Effective Treatment for Mental and Substan
 10
 </td>
 <td style="text-align:left;">
-Martin A, Bessonova L, Hughes R, et al. Systematic Review of Real-World Treatment Patterns of Oral Antipsychotics and Associated Economic Burden in Patients with Schizophrenia in the United States. Adv Ther. 2022;39(9):3933-3956. <a href="doi:10.1007/s12325-022-02232-z" class="uri">doi:10.1007/s12325-022-02232-z</a>
+American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5). — Arlington, VA: American Psychiatric Publishing, 2013. — P. 87—122. — 992 p. — ISBN 978-0-89042-554-1. — ISBN 978-0-89042-555-8. — ISBN 0-89042-554-X.
 </td>
 </tr>
 <tr>
@@ -3239,27 +3295,201 @@ Martin A, Bessonova L, Hughes R, et al. Systematic Review of Real-World Treatme
 11
 </td>
 <td style="text-align:left;">
+Marques S, Godinho F, Melo AL, Barrocas D. First-episode psychosis: What does it mean? European Psychiatry. 2016;33(S1):s258-s258. <a href="doi:10.1016/j.eurpsy.2016.01.656" class="uri">doi:10.1016/j.eurpsy.2016.01.656</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Suetani S, Wang W. First episode psychosis and beyond: much progress made but much more needed. BMC Psychiatry. 2023 Mar 7;23(1):143. doi: 10.1186/s12888-023-04639-6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+PMID: 36882757; PMCID: PMC9993623. Birchwood M, Macmillan F. Early intervention in schizophrenia. Aust N Z J Psychiatry. 1993 Sep;27(3):374-8. doi: 10.3109/00048679309075792. PMID: 8250779
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Nordentoft M, Rasmussen JO, Melau M, Hjorthøj CR, Thorup AA. How successful are first episode programs? A review of the evidence for specialized assertive early intervention. Curr Opin Psychiatry. 2014;27(3):167-172. <a href="doi:10.1097/YCO.000000000000005" class="uri">doi:10.1097/YCO.000000000000005</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Services vs Treatment as Usual for Early-Phase Psychosis: A Systematic Review, Meta-analysis, and Meta-regression. JAMA Psychiatry. 2018;75(6):555-565. <a href="doi:10.1001/jamapsychiatry.2018.0623" class="uri">doi:10.1001/jamapsychiatry.2018.0623</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Birchwood M, Macmillan F. Early intervention in schizophrenia. Aust N Z J Psychiatry. 1993 Sep;27(3):374-8. doi: 10.3109/00048679309075792. PMID: 8250779.
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Alvarez-Jiménez M, Parker AG, Hetrick SE, McGorry PD, Gleeson JF. Preventing the second episode: a systematic review and meta-analysis of psychosocial and pharmacological trials in first-episode psychosis. Schizophr Bull. 2011;37(3):619-630. <a href="doi:10.1093/schbul/sbp129" class="uri">doi:10.1093/schbul/sbp129</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Keating D, McWilliams S, Boland F, Doyle R, Behan C, Strawbridge J, Clarke M. Prescribing pattern of antipsychotic medication for first-episode psychosis: a retrospective cohort study. BMJ Open. 2021 Jan 31;11(1):e040387. doi: 10.1136/bmjopen-2020-040387. PMID: 33518516; PMCID: PMC7852941
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Galletly C, Castle D, Dark F, et al. Royal Australian and New Zealand College of Psychiatrists clinical practice guidelines for the management of schizophrenia and related disorders. Aust N Z J Psychiatry 2016;50:410–72. 10.1177/0004867416641195
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Buchanan RW, Kreyenbuhl J, Kelly DL, et al. The 2009 schizophrenia Port psychopharmacological treatment recommendations and summary statements. Schizophr Bull 2010;36:71–93. 10.1093/schbul/sbp116
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Keating D, McWilliams S, Schneider I, et al. Pharmacological guidelines for schizophrenia: a systematic review and comparison of recommendations for the first episode. BMJ Open 2017;7:e013881. 10.1136/bmjopen-2016-013881
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Japanese Society of Neuropsychopharmacology. Japanese Society of Neuropsychopharmacology: ‘Guideline for Pharmacological Therapy of Schizophrenia’. Neuropsychopharmacol Rep. 2021 Sep;41(3):266-324. doi: 10.1002/npr2.12193. Epub 2021 Aug 12. PMID: 34390232; PMCID: PMC8411321.
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Asian Network of Early Psychosis Writing Group. Guidelines for Discontinuation of Antipsychotics in Patients Who Recover From First-Episode Schizophrenia Spectrum Disorders: Derived From the Aggregated Opinions of Asian Network of Early Psychosis Experts and Literature Review. Int J Neuropsychopharmacol. 2022 Sep 28;25(9):737-758. doi: 10.1093/ijnp/pyac002. PMID: 35451023; PMCID: PMC9515132.
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Zhang C, Chen M-J, Wu G-J, et al. Effectiveness of Antipsychotic Drugs for 24-Month Maintenance Treatment in First-Episode Schizophrenia: Evidence From a Community-Based ‘Real-World’ Study. J Clin Psychiatry 2016;77:e1460–6. 10.4088/JCP.15m10047
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Lally J, Ajnakina O, Stubbs B, et al. Remission and recovery from first-episode psychosis in adults: systematic review and meta-analysis of long-term outcome studies. Br J Psychiatry 2017;211:350–8. 10.1192/bjp.bp.117.201475
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Hui CLM, Honer WG, Lee EHM, et al. Long-Term effects of discontinuation from antipsychotic maintenance following first-episode schizophrenia and related disorders: a 10 year follow-up of a randomised, double-blind trial. Lancet Psychiatry 2018;5:432–42. 10.1016/S2215-0366(18)30090-7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Viana MC, Kazdin AE, Harris MG, et al. Barriers to 12-month treatment of common anxiety, mood, and substance use disorders in the World Mental Health (WMH) surveys. Int J Ment Health Syst. 2025;19(1):6. Published 2025 Feb 9. <a href="doi:10.1186/s13033-024-00658-2" class="uri">doi:10.1186/s13033-024-00658-2</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Vigo DV, Stein DJ, Harris MG, et al. Effective Treatment for Mental and Substance Use Disorders in 21 Countries. JAMA Psychiatry. 2025;82(4):347-357. <a href="doi:10.1001/jamapsychiatry.2024.4378" class="uri">doi:10.1001/jamapsychiatry.2024.4378</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Martin A, Bessonova L, Hughes R, et al. Systematic Review of Real-World Treatment Patterns of Oral Antipsychotics and Associated Economic Burden in Patients with Schizophrenia in the United States. Adv Ther. 2022;39(9):3933-3956. <a href="doi:10.1007/s12325-022-02232-z" class="uri">doi:10.1007/s12325-022-02232-z</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
 Kohn R, Saxena S, Levav I, Saraceno B. The treatment gap in mental health care. Bull World Health Organ. 2004;82(11):858-866.
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+Johnson ES, Bartman BA, Briesacher BA, et al. The incident user design in comparative effectiveness research. Pharmacoepidemiol Drug Saf. 2013;22(1):1-6. <a href="doi:10.1002/pds.3334" class="uri">doi:10.1002/pds.3334</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+Rao GA, Shoaibi A, Makadia R, et al. CohortDiagnostics: Phenotype evaluation across a network of observational data sources using population-level characterization. PLoS One. 2025;20(1):e0310634. Published 2025 Jan 16. <a href="doi:10.1371/journal.pone.0310634" class="uri">doi:10.1371/journal.pone.0310634</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+<a href="https://ohdsi.github.io/CohortMethod/" class="uri">https://ohdsi.github.io/CohortMethod/</a>
 </td>
 </tr>
 </tbody>
 </table>
-<div id="refs" class="references csl-bib-body">
-<div id="ref-Schuemie2020-fa" class="csl-entry">
-<div class="csl-left-margin">1 </div><div class="csl-right-inline">Schuemie M, Suchard M, Ryan P. <span>CohortMethod</span>: New-user cohort method with large scale propensity and outcome models. 2020.</div>
-</div>
+<div id="refs">
+
 </div>
 </div>
 <div id="appendix-appendix" class="section level1 unnumbered">
 <h1>Appendix</h1>
 </div>
-<div id="exposure-cohort-definitions" class="section level1" number="13">
+<div id="exposure-cohort-definitions" class="section level1" number="12">
 <h1><span class="header-section-number">A</span> Exposure Cohort Definitions</h1>
 </div>
-<div id="outcome-cohort-definitions" class="section level1" number="14">
+<div id="outcome-cohort-definitions" class="section level1" number="13">
 <h1><span class="header-section-number">B</span> Outcome Cohort Definitions</h1>
 </div>
-<div id="negative-controls" class="section level1" number="15">
+<div id="negative-controls" class="section level1" number="14">
 <h1><span class="header-section-number">C</span> Negative Control Concepts</h1>
 </div>
 

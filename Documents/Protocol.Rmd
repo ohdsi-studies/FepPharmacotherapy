@@ -50,7 +50,7 @@ mainfont: Arial
 bibliography: Protocol.bib
 params:
   date: '14-Apr-2025'
-  version: 0.0.1
+  version: 1.0.0
 subtitle: 'Version: `r params$version`'
 link-citations: yes
 csl: bmj.csl
@@ -80,19 +80,17 @@ latex_table_font_size <- 8
 ```{r abbreviations, echo=FALSE}
 abbreviations <- readr::read_delim(col_names = FALSE, delim = ";", trim_ws = TRUE, file = "
   OHDSI; Observational Health Data Sciences and Informatics
-  CDM; Common data model
-  ICD-10; International Classification of Diseases, Tenth Revision
-  ICD10-CM; International Classification of Diseases, Tenth Revision, Clinical Modification
   DALY; Disability-Adjusted Life Years
-  FEP; First-Episode Psychosis
+  FEP; First-episode psychosis
+  AP; Antipsychotic
   SGA; Second-generation antipsychotic
   FGA; First-generation antipsychotic
-  AP; Antipsychotic
-  TAR; Time-at-Risk
   HADES; Health Analytics Data-to-Evidence Suite
+  PS; Propensity score
+  FEP2; Firs-episode psychosis pharmacotherapy
 ")
 
-tab <- kable(abbreviations, col.names = NULL, linesep = "", booktabs = TRUE)
+tab <- kable(abbreviations, col.names = NULL, caption = 'Table 1. List of Abbreviations', label = NA, linesep = "", booktabs = TRUE)
 
 if (knitr::is_latex_output()) {
   tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
@@ -116,19 +114,19 @@ This study is undertaken within Observational Health Data Sciences and Informati
 # Abstract
 
 **Background and Significance**: 
-Schizophrenia is a severe neuropsychiatric disorder which often lead to a significant functional and cognitive impairment. Although its prevalence is relatively low [1-3], schizophrenia is one of the biggest causes of Disability-Adjusted Life Years (DALYs) worldwide [4]. The term 'first-episode schizophrenia' is often used interchangeably with the term 'first-episode psychosis' (FEP), since distinguishing former from the latter is a complex and often impossible clinical task, because clinical picture and further manifestations of the disorder may be multimodal and evolving. Studies show that interventions at the earliest stages of the disorder are important for  ameliorating the course of illness [5, 6]. Treatment with antipsychotics is one of such interventions [7]. However, the choice of medication for treatment of FEP requires further investigation. Current clinical practice guidelines mention the heterogeneity of clinical trial designs and limited number of head-to-head comparisons as factors preventing from creating an evidence-based ranking of second-generation antipsychotics (SGAs) and first-generation antipsychotics (FGAs) [8].
+Schizophrenia is a severe neuropsychiatric disorder which often leads to a significant functional and cognitive impairment. Although its prevalence is relatively low [1-3], schizophrenia is one of the biggest causes of Disability-Adjusted Life Years (DALYs) worldwide [4]. The term 'first-episode schizophrenia' is often used interchangeably with the term 'first-episode psychosis' (FEP), since distinguishing former from the latter is a complex and often impossible clinical task, because clinical picture and further manifestations of the disorder may be multimodal and evolving. Studies show that interventions at the earliest stages of the disorder are important for  ameliorating the course of illness [5, 6]. Treatment with antipsychotics (APs) is one of such interventions [7]. However, the choice of medication for treatment of FEP requires further investigation. Current clinical practice guidelines mention the heterogeneity of clinical trial designs and limited number of head-to-head comparisons as factors preventing from creating an evidence-based ranking of second-generation antipsychotics (SGAs) and first-generation antipsychotics (FGAs) [8].
 
 **Study Aims**: 
-This study aims at creating a head-to-head comparison framework for the effectiveness several commonly used FGAs and SGAs when used in treating patients with first-episode psychoses.
+This study aims at creating a head-to-head comparison framework for the effectiveness of several commonly used FGAs and SGAs when used in treating patients with first-episode psychoses.
 
 **Study Description**: 
-We will conduct a large-scale, systematic, observational study for each of the pairwise comparisons of 9 drugs of interest (Risperidone, Haloperidol, Aripiprazole, Brexpiprazole, Olanzapine, Quetiapine, Ziprazidone, Lurazidone, Paliperidone). This list includes the most common antipsychotic agents used for treatment of the first psychotic episode as per the results of OHDSI "Phenotype Phebruary 2025" initiative [9].
+We will conduct a large-scale, systematic, observational study for each of the pairwise comparisons of 9 drugs of interest (Risperidone, Haloperidol, Aripiprazole, Brexpiprazole, Olanzapine, Quetiapine, Ziprazidone, Lurazidone, Paliperidone). This list includes the most common antipsychotic agents used for treatment of the first psychotic episode as per the results of OHDSI "Phenotype Phebruary 2025" initiative [9]. We will assess the hazard ratio of rehospitalizations with psychosis relapse as a proxy for drug effectiveness.
 
 * **Population**: 
-Patients 18-40 years old experiencing a first-in-a-lifetime of psychotic episode, and with no record of treatment non-adherence during the diagnosis period who are first-time users of a specific AP. For a diagnosis setting, we will require either a recorded inpatient visit or 2 subsequent visits within 30 days. We will exclude patients who had a diagnosis of an organic or drug-induced mental disorder to control for diagnosis recording differences across datasets.  
+Patients 18-40 years old experiencing a first-in-a-lifetime psychotic episode, and with no record of treatment non-adherence during the diagnosis period who are first-time users of a specific AP. For a diagnosis setting, we will require either a recorded inpatient visit or 2 subsequent visits within 30 days. We will exclude patients who had a diagnosis of an organic or drug-induced mental disorder to control for diagnosis recording differences across datasets.  
 
 * **Comparators**:
-We defined drugs by a respective ingredient or, in the case of Quetiapine, of a dose of 100 mg or more. First exposure  to one of the drugs on the list will be an indexing event, and we will not allow for polypharmacotherapy with antipsychotics (APs) by censoring on exposure to any other AP unless it happens between the 2 visits requires in the "Population" section.
+We defined drugs by a respective ingredient or, in the case of Quetiapine, of a dose of 100 mg or more. First exposure  to one of the drugs on the list will be an indexing event, and we will not allow for polypharmacotherapy with APs by censoring on exposure to any other AP unless it happens between the 2 visits described in the "Population" section.
 
 * **Outcomes**:
 We will use rehospitalization with a diagnosis of a psychotic disorder as a proxy for drug effectiveness. As mentioned above, relapse prevention is one of the key targets in treatment of first-episode psychosis. Rehospitalization as an outcome encompasses both inherent drug effectiveness as well as such factors as side effects influencing treatment adherence.
@@ -155,21 +153,17 @@ Schizophrenia usually begins at young ages and is typically persistent; the diso
 The first five years after the onset of FEP have a disproportionate long-term impact on the patient’s psychosocial functioning and wellbeing [12, 13].Studies show that interventions at the earliest stages of the disorder are important for ameliorating the course of illness [14, 15].
 Early interventions in FEP involve a combination of pharmacological and psychosocial treatments with the aim of preventing or limiting social, psychological and mental deterioration [16]. Treatment with antipsychotics is the main component of such interventions [17].
 However, the choice of medication for treatment of FEP requires further investigation. Current clinical practice guidelines mention the heterogeneity of clinical trial designs and limited number of head-to-head comparisons as factors preventing from creating an evidence-based ranking of SGAs and FGAs [8]. It is usually recommended to choose antipsychotic for treatment of FEP on the basis of side effect profile by using ‘start law go slow’ approach [18]. Some guidelines recommended second generation antipsychotics as initial treatment of FEP without indicating the superiority of any of them in terms of efficacy [19-22]. The recommended duration of antipsychotic treatment after FEP remains unresolved, some of the current guidelines recommended antipsychotic discontinuation after 1 to 2 years of treatment [23]. Maintenance treatment with antipsychotics after FEP reduces rates of hospitalizations, improves life expectancy and improves functional outcomes [24-26]
-In the research field of psychiatry, measuring treatment effectiveness and outcomes and providing clinicians a clear roadmap for treatment are challenging tasks. This is, among other things, related to low perceived severity of the disorders, perceived treatment ineffectiveness and stigma among patients [27]. Such complications to the research process result in difficulties when stratifying treatment options in the clinical guidelines, giving the practitioners guidance on the general principles, but leading to inconsistent treatment and care patterns across the globe [28-30].
+Measuring treatment effectiveness and outcomes and providing clinicians a clear roadmap for treatment remain challenging in the field of psychiatry. This is, among other things, related to low perceived severity of the disorders, perceived treatment ineffectiveness and stigma among patients [27]. Such complications to the research process result in difficulties when stratifying treatment options in the clinical guidelines, giving the practitioners guidance on the general principles, but leading to inconsistent treatment and care patterns across the globe [28-30].
+
 # Study Objectives
+To inform clinical decisions and future policymaking, we will conduct an observational study comparing the effectiveness of antipsychotic agents in relapse prevention after the first-in-a-lifetime psychotic episode.
 
 # Research Methods
-
-## Study Design
-FEP2 will be a systematic, large-scale observational study of antipsychotic agents to estimate the relative risk of rehospitalization with a diagnosis of a psychotic disorder. Table 3 demonstrates the 36 pairwise comparisons of 9 APs assessed.
+We will conduct a large-scale, systematic observational study to compare the hazard rations of rehospitalization with a psychotic relapse among patients who were administered one of 9 APs of interest as a first-line treatment for FEP. We will conduct 36 head-to-head pairwise comparisons as indicated in a table below.
 ```{r comparisons, echo=FALSE}
-comparisons <- readr::read_delim(col_names = c("Target", "Comparator"), delim = ";", trim_ws = TRUE, file = "
-  Haloperidol; Risperidone
-  Haloperidol; Olanzapine
-  Haloperidol; Quetiapine 100 mg/day and above
-")
+comparisons <- data.frame(Comparators = c("Haloperidol", "Risperidone", "Aripiprazole", "Brexpiprazole", "Olanzapine", "Quetiapine 100 mg/day and above", "Ziprazidone", "Lurazidone", "Paliperidone"), Haloperidol = c(" ", "X", "X", "X", "X", "X", "X", "X", "X"), Risperidone = c(" ", " ", "X", "X", "X", "X", "X", "X", "X"), Aripiprazole = c(" ", " ", " ", "X", "X", "X", "X", "X", "X"), Brexpiprazole = c(" ", " ", " ", " ", "X", "X", "X", "X", "X"), Olanzapine = c(" ", " ", " ", " ", " ", "X", "X", "X", "X"), Quetiapine = c(" ", " ", " ", " ", " ", " ", "X", "X", "X"), Ziprazidone = c(" ", " ", " ", " ", " ", " ", " ", "X", "X"), Lurazidone = c(" ", " ", " ", " ", " ", " ", " ", " ", "X"), Paliperidone = c(" ", " ", " ", " ", " ", " ", " ", " ", " "))
 
-tab <- kable(comparisons, col.names = NULL, linesep = "", booktabs = TRUE)
+tab <- kable(comparisons, caption = 'Table 3. Exposure-Comparator Matrix', label = NA, linesep = "", booktabs = TRUE)
 
 if (knitr::is_latex_output()) {
   tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
@@ -178,11 +172,22 @@ if (knitr::is_latex_output()) {
   tab %>% kable_styling(bootstrap_options = "striped")
 }
 ```
+
+## Study Design
 For each of the target-comparator pairs, we will employ a new-user cohort design, which is advocated as the primary design to be considered for comparative effectiveness and drug safety [31]. We will be using first-in-a-lifetime drug exposure to one of the APs of interest as an indexing event for cohort entry. 
-Here and below, when mentioning a diagnosis of a psychotic disorder, we will refer to a set of diagnoses that includes all the psychotic disorders and non-chronic affective disorders with psychotic symptoms, and specifically excludes organic and drug-induced psychoses. 
-We will be limiting patients entering the cohort to those aged 18-40, who have been diagnosed with a psychotic disorder in an inpatient setting once or in an outpatient setting twice within 30 days prior. We excluded patients who had any other prior diagnoses of a psychotic disorder or any prior exposure to AP. To control for the effect disorder itself can have on treatment compliance, we excluded patients for whom non-compliance to treatment was recorded within the diagnosis period.
+Here and below, when mentioning a diagnosis of a psychotic disorder for FEP, we will refer to a set of diagnoses that includes all the psychotic disorders and non-chronic affective disorders with psychotic symptoms, and specifically excludes organic and drug-induced psychoses. When assessing relapses, non-chronic affective disorders with psychotic symptoms will be excluded from the list. This will be done to allow for diagnosis variability in the case of FEP, since the first-in-a-lifetime diagnosis may present chllenges to clinicians [11]. 
+We will be limiting patients entering the cohort to those aged 18-40, who have been diagnosed with a psychotic disorder in an inpatient setting once or in an outpatient setting twice within 30 days prior to index date. We will exclude patients who had any other prior diagnoses of a psychotic disorder or any prior exposure to APs. To control for the effect disorder itself can have on treatment compliance, we will also exclude patients for whom non-compliance to treatment was recorded within the diagnosis period.
 To control for cases of polypharmacotherapy and prescription of several APs, we will be censoring on exposure to any other AP except the one used in an index event.
 We will be assessing outcomes within TAR of 180 days, starting on the 31st day after cohort start. This is intended to filter out the patients who were censored due to AP change too early, signifying a potential unreliable record.
+The overview of the cohort design choices is presented in the figure below. More detailed cohort definitions along with the concept sets used are presented in Appendix A.
+
+```{r, echo=FALSE}
+
+
+knitr::include_graphics("Cohort design.png")
+
+
+```
 
 ## Data Sources
 We will execute FEP2 as an OHDSI network study. All the Data Partners within OHDSI community are invited to participate. The transparency of the study is ensured by clear communication in the OHDSI Microsoft Teams environment and open access to the study repository on OHDSI Studies GitHub.
@@ -191,21 +196,31 @@ We will execute FEP2 as an OHDSI network study. All the Data Partners within OHD
 The study population will include all patients qualifying for the cohort definition described above. In addition, we require a minimum of 365 days of prior continuous observation. Since the study assesses the risk of a relapse, we will not be setting a clean window for prior outcome lookback.
 
 ## Exposure Comparators
-The definitions of all the comparator cohorts follow the principles outlined in the "Study Design" section above. Visual representation of a cohort definition is in Figure 1.
+We will be using combined Exposure-Comparator cohorts for each of the 9 APs of interest. The cohort logic will follow the principles outlined in Figure 1, with detailed definitions outlined in Appendix A.
 
 ## Outcomes {#outcomes}
+We will be using inpatient or ER visit with an accompanying diagnosis of a psychotic disorder (below - rehospitalization) as an outcome for the study. Outcome cohort definition is outlined in detail in Appendix B. We will be looking for outcomes happening within the Time-at-Risk window of 180 days starting on the 31st day after ther index event. This is intended to (1) exclude from the analysis patients who were censored from the cohort early, signifying a potentially unreliable record; and (2) cover the crucial early period for psychosis relapse prevention [14, 15].
 
 ## Analysis
-We will be using several of the OHDSI HADES packages. First, each participating dataset will be examined using the CohortDiagnostics package [32]. Then, the study itself will be run using the CorohtMethod package [33].  
+We will be using several of the OHDSI Health Analytics Data-to-Evidence Suite (HADES) packages. First, each participating dataset will be examined using the CohortDiagnostics package [32]. It would allow for analyzing the datasets in relation to the cohort definitions, assessing sample sizes and potential differences emerging from dataset-specific features. At this step, the decision could be made of removing the dataset from the study if the results would suggest an inherent bias.
+Then, the study itself will be run using the CorohtMethod package [33]. To control for the possible confounding factors, we will build a large-scale propensity score (PS) model for each of the parwise comparisons. We will  perform all the analyses using matching and stratification by PS, giving preference to stratification if both models produce sufficient results. We will use Cox proportional hazards model to estimate hazard ratios (HR) between the comparators in their respective pairs for each dataset. We will combine HRs from non-overlapping data sources using random effect meta-analysis model [34]. We will be using a list of negative control outcomes (outlined in Appendix C) to empirically calibrate the p-values [35, 36]. Then, we will assess if significant difference in HR exists between the comparators using the p-value of 0,05 as estimated based on the empirical null distribution. Lastly, the investigators will examine the study diagnostics results to check if the estimates can be considered unbiased.
+
 # Sample Size and Study Power {#sample-size}
+With each data source, we will execute all the analyses having 1000 eligible patients or more. The investigators will thoroughly assess the results of study diagnostics for generalizability and reliability. The diagnostics will include: minimum detectable risk ratios; preference score distributions; patient characteristics before and after adjusting by PS; negative control calibration plots; and Kaplan-Meier plots for HR.
 
 # Strengths and Limitations {#strengths-limitations}
+The study's strengths are based on its large-scale, network structure and formalized outcome definition. We will be assessing the hazard ratio of an outcome crucial for further patient history, well-being and disease progression across a large number of data sources without deferring to patient- or physician-reported measures, which may blur the picture [27]. The study will be focusing on a knowledge gap admitted in several major clinical practice guidelines and publications [8, 19-22], paving the way for additional research for treatment effectiveness.
+Being an observational study, our investigation may be affected by the unmeasured of misspecified confounders. To mitigate this, we will be using a large list of negative controls, representing exposure-outcome pairs with no known effect.
+Since we aim at estimating the effectiveness of single-drug therapies, the cohort design and censoring criteria may exclude otherwise eligible patients from the study. To control for the effect of that, in our cohort definition design we allow for a short window for drug change between the visits required as inclusion criteria; we also set the TAR start at day 31 to limit the number of patient whose records may be considered unreliable due to initial polypharmacotherapy or frequent drug switches as recorded in the data.
 
 # Protection of Human Subjects
+FEP2 study will not involve human subjects research. The participating data partners will have access to human data collected during healthcare provision. The data will be de-identified within a data source. 
 
 # Management and Reporting of Adverse Events and Adverse Reactions
+Our study will be using de-identified results that already exist in the electronic healthcare databases. With that, it would be impossible to link a potential adverse event to a given individual. We will assess the study result for medically important findings.
 
 # Plans for Disseminating and Communicating Study Results
+Being conducted within the OHDSI community, our study follows the open-science paradigm. All the milestones will be reported in the OHDSI open communication channels. The cohort definitions used will be created at the publically-available ATLAS demo platform [37]. The protocol and scripts used for creating study specifications will be published and updated in the corresponding OHDSI Studies GitHub repository [38]. The study progress and results will be presented to the OHDSI community during the weekly calls and at the Symposia; the results will be also presented to the larger audience of clinicians, researchers and policymakers at the annual professional congresses. 
 
 \clearpage
 
@@ -213,8 +228,8 @@ We will be using several of the OHDSI HADES packages. First, each participating 
 ```{r references, echo=FALSE}
 references <- readr::read_delim(col_names = FALSE, delim = "|", trim_ws = TRUE, file = "
   1| Moreno-Küstner B, Martín C, Pastor L. Prevalence of psychotic disorders and its association with methodological issues. A systematic review and meta-analyses. PLoS One. 2018;13(4):e0195687. Published 2018 Apr 12. doi:10.1371/journal.pone.0195687
-  2| Saha S, Chant D, Welham J, McGrath J. A systematic review of the prevalence of schizophrenia. PLoS Med. 2005 May;2(5):e141. PMID: 15916472
-  3| Moreno-Küstner B, Martín C, Pastor L. Prevalence of psychotic disorders and its association with methodological issues. A systematic review and meta-analyses. PLoS One. 2018;13(4):e0195687. PMID: 29649252
+  2| Saha S, Chant D, Welham J, McGrath J. A systematic review of the prevalence of schizophrenia. PLoS Med. 2005;2(5):e141. doi:10.1371/journal.pmed.0020141
+  3| Moreno-Küstner B, Martín C, Pastor L. Prevalence of psychotic disorders and its association with methodological issues. A systematic review and meta-analyses. PLoS One. 2018;13(4):e0195687. Published 2018 Apr 12. doi:10.1371/journal.pone.0195687
   4 | GBD 2019 Mental Disorders Collaborators. Global, regional, and national burden of 12 mental disorders in 204 countries and territories, 1990-2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet Psychiatry. 2022;9(2):137-150. doi:10.1016/S2215-0366(21)00395-3].
   5 | Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Services vs Treatment as Usual for Early-Phase Psychosis: A Systematic Review, Meta-analysis, and Meta-regression. JAMA Psychiatry. 2018;75(6):555-565. doi:10.1001/jamapsychiatry.2018.0623
   6| Nordentoft M, Rasmussen JO, Melau M, Hjorthøj CR, Thorup AA. How successful are first episode programs? A review of the evidence for specialized assertive early intervention. Curr Opin Psychiatry. 2014;27(3):167-172. doi:10.1097/YCO.0000000000000052
@@ -232,12 +247,12 @@ references <- readr::read_delim(col_names = FALSE, delim = "|", trim_ws = TRUE, 
   18| Keating D, McWilliams S, Boland F, Doyle R, Behan C, Strawbridge J, Clarke M. Prescribing pattern of antipsychotic medication for first-episode psychosis: a retrospective cohort study. BMJ Open. 2021 Jan 31;11(1):e040387. doi: 10.1136/bmjopen-2020-040387. PMID: 33518516; PMCID: PMC7852941
   19| Galletly C, Castle D, Dark F, et al. Royal Australian and New Zealand College of Psychiatrists clinical practice guidelines for the management of schizophrenia and related disorders. Aust N Z J Psychiatry 2016;50:410–72. 10.1177/0004867416641195
   20| Buchanan RW, Kreyenbuhl J, Kelly DL, et al. The 2009 schizophrenia Port psychopharmacological treatment recommendations and summary statements. Schizophr Bull 2010;36:71–93. 10.1093/schbul/sbp116 
-  21| Keating D, McWilliams S, Schneider I, et al. Pharmacological guidelines for schizophrenia: a systematic review and comparison of recommendations for the first episode. BMJ Open 2017;7:e013881. 10.1136/bmjopen-2016-013881
-  22| Japanese Society of Neuropsychopharmacology. Japanese Society of Neuropsychopharmacology: 'Guideline for Pharmacological Therapy of Schizophrenia'. Neuropsychopharmacol Rep. 2021 Sep;41(3):266-324. doi: 10.1002/npr2.12193. Epub 2021 Aug 12. PMID: 34390232; PMCID: PMC8411321.
-  23| Asian Network of Early Psychosis Writing Group. Guidelines for Discontinuation of Antipsychotics in Patients Who Recover From First-Episode Schizophrenia Spectrum Disorders: Derived From the Aggregated Opinions of Asian Network of Early Psychosis Experts and Literature Review. Int J Neuropsychopharmacol. 2022 Sep 28;25(9):737-758. doi: 10.1093/ijnp/pyac002. PMID: 35451023; PMCID: PMC9515132.
-  24| Zhang C, Chen M-J, Wu G-J, et al. Effectiveness of Antipsychotic Drugs for 24-Month Maintenance Treatment in First-Episode Schizophrenia: Evidence From a Community-Based 'Real-World' Study. J Clin Psychiatry 2016;77:e1460–6. 10.4088/JCP.15m10047
-  25| Lally J, Ajnakina O, Stubbs B, et al. Remission and recovery from first-episode psychosis in adults: systematic review and meta-analysis of long-term outcome studies. Br J Psychiatry 2017;211:350–8. 10.1192/bjp.bp.117.201475
-  26| Hui CLM, Honer WG, Lee EHM, et al. Long-Term effects of discontinuation from antipsychotic maintenance following first-episode schizophrenia and related disorders: a 10 year follow-up of a randomised, double-blind trial. Lancet Psychiatry 2018;5:432–42. 10.1016/S2215-0366(18)30090-7
+  21| Keating D, McWilliams S, Schneider I, et al. Pharmacological guidelines for schizophrenia: a systematic review and comparison of recommendations for the first episode. BMJ Open. 2017;7(1):e013881. Published 2017 Jan 6. doi:10.1136/bmjopen-2016-013881
+  22| Japanese Society of Neuropsychopharmacology. Japanese Society of Neuropsychopharmacology: 'Guideline for Pharmacological Therapy of Schizophrenia'. Neuropsychopharmacol Rep. 2021;41(3):266-324. doi:10.1002/npr2.12193
+  23| Asian Network of Early Psychosis Writing Group. Guidelines for Discontinuation of Antipsychotics in Patients Who Recover From First-Episode Schizophrenia Spectrum Disorders: Derived From the Aggregated Opinions of Asian Network of Early Psychosis Experts and Literature Review. Int J Neuropsychopharmacol. 2022 Sep 28;25(9):737-758. doi: 10.1093/ijnp/pyac002.
+  24| Zhang C, Chen MJ, Wu GJ, et al. Effectiveness of Antipsychotic Drugs for 24-Month Maintenance Treatment in First-Episode Schizophrenia: Evidence From a Community-Based 'Real-World' Study. J Clin Psychiatry. 2016;77(11):e1460-e1466. doi:10.4088/JCP.15m10047
+  25| Lally J, Ajnakina O, Stubbs B, et al. Remission and recovery from first-episode psychosis in adults: systematic review and meta-analysis of long-term outcome studies. Br J Psychiatry. 2017;211(6):350-358. doi:10.1192/bjp.bp.117.201475
+  26| Hui CLM, Honer WG, Lee EHM, et al. Long-term effects of discontinuation from antipsychotic maintenance following first-episode schizophrenia and related disorders: a 10 year follow-up of a randomised, double-blind trial. Lancet Psychiatry. 2018;5(5):432-442. doi:10.1016/S2215-0366(18)30090-7
   27| Viana MC, Kazdin AE, Harris MG, et al. Barriers to 12-month treatment of common anxiety, mood, and substance use disorders in the World Mental Health (WMH) surveys. Int J Ment Health Syst. 2025;19(1):6. Published 2025 Feb 9. doi:10.1186/s13033-024-00658-2
   28| Vigo DV, Stein DJ, Harris MG, et al. Effective Treatment for Mental and Substance Use Disorders in 21 Countries. JAMA Psychiatry. 2025;82(4):347-357. doi:10.1001/jamapsychiatry.2024.4378
   29| Martin A, Bessonova L, Hughes R, et al. Systematic Review of Real-World Treatment Patterns of Oral Antipsychotics and Associated Economic Burden in Patients with Schizophrenia in the United States. Adv Ther. 2022;39(9):3933-3956. doi:10.1007/s12325-022-02232-z
@@ -245,6 +260,11 @@ references <- readr::read_delim(col_names = FALSE, delim = "|", trim_ws = TRUE, 
   31| Johnson ES, Bartman BA, Briesacher BA, et al. The incident user design in comparative effectiveness research. Pharmacoepidemiol Drug Saf. 2013;22(1):1-6. doi:10.1002/pds.3334
   32| Rao GA, Shoaibi A, Makadia R, et al. CohortDiagnostics: Phenotype evaluation across a network of observational data sources using population-level characterization. PLoS One. 2025;20(1):e0310634. Published 2025 Jan 16. doi:10.1371/journal.pone.0310634
   33| https://ohdsi.github.io/CohortMethod/
+  34| DerSimonian R, Laird N. Meta-analysis in clinical trials. Control Clin Trials. 1986;7(3):177-188. doi:10.1016/0197-2456(86)90046-2
+  35| Schuemie MJ, Ryan PB, DuMouchel W, Suchard MA, Madigan D. Interpreting observational studies: why empirical calibration is needed to correct p-values. Stat Med. 2014;33(2):209-218. doi:10.1002/sim.5925
+  36| Schuemie MJ, Hripcsak G, Ryan PB, Madigan D, Suchard MA. Robust empirical calibration of p-values using observational data. Stat Med. 2016;35(22):3883-3888. doi:10.1002/sim.6977
+  37| https://atlas.odysseusinc.com/#/home
+  38| https://github.com/ohdsi-studies/FepPharmacotherapy/tree/main
 ")
 
 tab <- kable(references, col.names = NULL, linesep = "", booktabs = TRUE)
@@ -266,8 +286,881 @@ if (knitr::is_latex_output()) {
 # (APPENDIX) Appendix {-}
 
 # Exposure Cohort Definitions
+In the cohort definition below, the entry event 'Antipsychotic' drug exposure and the corresponding 'All other antipsychotics' censoring event are as per table below.
 
+Cohort Entry Events
+People with continuous observation of 365 days before event may enter the cohort when observing any of the following:
+
+drug exposures of 'Antipsychotic'*.
+Limit cohort entry events to the earliest event per person.
+
+Inclusion Criteria
+1. Age 18-40: Patients 18-40 years old
+Entry events with the following event criteria: who are between 18 and 40 years old.
+
+2. Exclude noncompliance to treatment: Exclude patients with recorded noncompliance with treatment during the time period for entry event.
+Entry events having no observations of '[GDE2025] SCH Noncompliance with treatment', starting between 30 days before and 0 days after cohort entry start date.
+
+3. Exclude APs prior: Exclude antipsychotic exposure prior to entry event
+Entry events having no drug exposures of '[GDE2025] SCH All antipsychotics', starting anytime up to 30 days before cohort entry start date.
+
+4. Exclude SCs non-excludable otherwise: Exclude ICD10CM codes for dementia mapped to psychotic disorder
+Entry events having no condition occurrences of '[GDE2025] SCH First-episode psychosis' (including '[GDE2025] SCH FEP source codes for exclusion' source concepts), starting between 30 days before and 0 days after cohort entry start date.
+
+5. 1 IP or 2 OP visits: 1 IP or 2 OP visits with psychosis within 30 days, 30 days prior to drug exposure
+Entry events with any of the following criteria:
+
+having at least 1 visit occurrence of '[GDE2025] SCH Inpatient Visit & ER', starting between 30 days before and 0 days before cohort entry start date; having at least 1 condition occurrence of '[GDE2025] SCH First-episode psychosis', starting between 0 days before and all days after '[GDE2025] SCH Inpatient Visit & ER' start date and starting anytime on or before '[GDE2025] SCH Inpatient Visit & ER' end date.
+having at least 2 condition occurrences of '[GDE2025] SCH First-episode psychosis', starting between 30 days before and 0 days before cohort entry start date.
+
+6. Exclude prior psychoses: No psychoses prior to the inclusion visit
+Entry events having no condition occurrences of '[GDE2025] SCH First-episode psychosis', starting anytime up to 30 days before cohort entry start date.
+
+7. No other APs on the first day: Exclude patients taking other APs on day 1
+Entry events having no drug exposures of '[GDE2025] SCH APs wo Risperidone', starting between 0 days before and 0 days after cohort entry start date.
+
+8. No other APs covering day 0: Excluding multiple drugs with long exposures
+Entry events having no drug exposures of '[GDE2025] SCH APs wo Risperidone', starting anytime prior to cohort entry start date and ending 1 days after cohort entry start date.
+
+9. No organic psychotic conditions during the diagnosis period: Additional exclusion of organic and drug-induced psychoses
+Entry events having no condition occurrences of '[PP2025 FEP2] Organic and drug-induced psychoses', starting between 30 days before and 0 days after cohort entry start date.
+
+Cohort Exit
+The person exits the cohort at the end of continuous observation. The person exits the cohort when encountering any of the following events: 1. drug exposures of 'Any other antipsychotic'**.
+
+Cohort Eras
+Remaining events will be combined into cohort eras if they are within 0 days of each other.
+
+Concept Sets used:
+```{r IP, echo=FALSE}
+IP <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+9201; Inpatient Visit;	IP;	Visit;	NO;	YES;	NO
+262;	Emergency Room and Inpatient Visit;	ERIP;	Visit;	NO;	YES;	NO
+")
+
+tab <- kable(IP, linesep = "", caption = '[GDE2025] SCH Inpatient Visit & ER', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r OP, echo=FALSE}
+OP <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+9202;	Outpatient Visit;	OP;	Visit;	NO;	YES;	NO
+9203;	Emergency Room Visit;	ER;	Visit;	NO;	YES;	NO
+")
+
+tab <- kable(OP, linesep = "", caption = '[GDE2025] SCH Outpatient Visit & ER', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Noncompliance, echo=FALSE}
+Noncompliance <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+4175212;	Patient noncompliance - general;	275936005;	SNOMED;	NO;	YES;	NO
+4322482;	Noncompliance with treatment;	7058009;	SNOMED;	NO;	YES;	NO
+37016872;	Noncompliance with antiretroviral medication regimen;	713017009;	SNOMED;	YES;	YES;	NO
+4005175;	Noncompliance with dental treatment;	110479000;	SNOMED;	YES;	YES;	NO
+4031367;	Noncompliance with dietary regimen;	129832003;	SNOMED;	YES;	YES;	NO
+45767300;	Noncompliance with exercise regimen;	704662005;	SNOMED;	YES;	YES;	NO
+4032522;	Noncompliance with fluid volume management;	129833008;	SNOMED;	YES;	YES;	NO
+44810587;	Noncompliance with food fortification regimen;	898411000000109;	SNOMED;	YES;	YES;	NO
+44811678;	Noncompliance with home made oral supplement regimen;	905791000000106;	SNOMED;	YES;	YES;	NO
+45767299;	Noncompliance with immunization regimen;	704661003;	SNOMED;	YES;	YES;	NO
+4308000;	Noncompliance with infection control regimen;	423678000;	SNOMED;	YES;	YES;	NO
+44811675;	Noncompliance with oral nutritional supplement regimen;	905731000000105;	SNOMED;	YES;	YES;	NO
+44807726;	Noncompliance with physiotherapy regimen;	818071000000107;	SNOMED;	YES;	YES;	NO
+46270032;	Non-compliance with renal dialysis;	125141000119102;	SNOMED;	YES;	YES;	NO
+763687;	Noncompliance with self-monitoring regimen;	444781000124106;	SNOMED;	YES;	YES;	NO
+37016593;	Non-compliant with peritoneal dialysis prescription;	641000124109;	SNOMED;	YES;	YES;	NO
+
+")
+
+tab <- kable(Noncompliance, linesep = "", caption = '[GDE2025] SCH Noncompliance with treatment', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r AP, echo=FALSE}
+AP <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766814;	quetiapine;	51272;	RxNorm;	NO;	YES;	NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(AP, linesep = "", caption = '[GDE2025] SCH All antipsychotics', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Excluded, echo=FALSE}
+Excluded <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+37402410; Dementia in other diseases classified elsewhere, mild, with psychotic disturbance; F02.A2; ICD10C;; NO; NO; NO
+37402418; Dementia in other diseases classified elsewhere, moderate, with psychotic disturbance;; F02.B2; ICD10CM; NO; NO; NO
+37402426; Dementia in other diseases classified elsewhere, severe, with psychotic disturbance; F02.C2; ICD10CM; NO; NO; NO
+37402402; Dementia in other diseases classified elsewhere, unspecified severity, with psychotic disturbance; F02.82; ICD10CM; NO; NO; NO
+37402439; Unspecified dementia, mild, with psychotic disturbance; F03.A2; ICD10CM; NO; NO; NO
+37402447; Unspecified dementia, moderate, with psychotic disturbance; F03.B2; ICD10CM; NO; NO; NO
+37402455; Unspecified dementia, severe, with psychotic disturbance; F03.C2; ICD10CM; NO; NO; NO
+37402432; Unspecified dementia, unspecified severity, with mood disturbance; F03.93; ICD10CM; NO; NO; NO
+37402431; Unspecified dementia, unspecified severity, with psychotic disturbance; F03.92; ICD10CM; NO; NO; NO
+37402381; Vascular dementia, mild, with psychotic disturbance; F01.A2; ICD10CM; NO; NO; NO
+37402391; Vascular dementia, moderate, with anxiety; F01.B4; ICD10CM; NO; NO; NO
+37402389; Vascular dementia, moderate, with psychotic disturbance; F01.B2; ICD10CM; NO; NO; NO
+37402397; Vascular dementia, severe, with psychotic disturbance; F01.C2; ICD10CM; NO; NO; NO
+37402373; Vascular dementia, unspecified severity, with psychotic disturbance; F01.52; ICD10CM; NO; NO; NO
+")
+
+tab <- kable(Excluded, linesep = "", caption = '[GDE2025] SCH FEP source codes for exclusion', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r FEP, echo=FALSE}
+FEP <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+436073; Psychotic disorder; 69322001; SNOMED; NO; YES; NO
+434900; Drug-induced psychosis; 191483003; SNOMED; YES; YES; NO
+4067987; Opioid-induced psychotic disorder with delusions; 20385005; SNOMED; YES; YES; NO
+4100247; Organic psychotic condition; 191447007; SNOMED; YES; YES; NO
+35622934; Psychosis and severe depression co-occurrent and due to bipolar affective disorder; 765176007; SNOMED; YES; YES; NO
+432590; Delusional disorder; 48500005; SNOMED; NO; YES; NO
+35610112; Mania with psychotic features; 1089681000000108; SNOMED; NO; YES; NO
+4250023; Severe major depression with psychotic features; 73867007; SNOMED; NO; YES; NO
+443559; Drug-induced delusional disorder; 427975003; SNOMED; YES; YES; NO
+375229; Organic delusional disorder; 5510009; SNOMED; YES; YES; NO
+4057246; Postpartum psychosis; 18260003; SNOMED; YES; YES; NO
+44782771; Presenile dementia with delusions; 31081000119101; SNOMED; YES; YES; NO
+380986; Senile dementia with delusion; 371024007; SNOMED; YES; YES; NO
+4154309; Severe recurrent major depression with psychotic features; 28475009; SNOMED; YES; YES; NO
+4141292; Severe recurrent major depression with psychotic features, mood-congruent; 33078009; SNOMED; YES; YES; NO
+4034842; Severe recurrent major depression with psychotic features, mood-incongruent; 15193003; SNOMED; YES; YES; NO
+434010; Schizotypal personality disorder; 31027006; SNOMED; NO; YES; NO
+36714473; Psychosis co-occurrent and due to Parkinson's disease; 719717006; SNOMED; YES; YES; NO
+35609824; Recurrent reactive depressive episodes, severe, with psychosis; 1086471000000103; SNOMED; YES; YES; NO
+4322477; Severe bipolar disorder with psychotic features, mood-congruent; 70546001; SNOMED; YES; YES; NO
+35609901; Late onset substance-induced psychosis; 1087461000000107; SNOMED; YES; YES; NO
+3187953; Postictal psychosis; 12920001000004106; Nebraska Lexicon; YES; YES; NO
+45757162; Psychotic disorder in mother complicating childbirth; 10760421000119102; SNOMED; YES; YES; NO
+45757163; Psychotic disorder in mother complicating pregnancy; 10760461000119107; SNOMED; YES; YES; NO
+4030431; Symbiotic infantile psychosis; 129602009; SNOMED; YES; YES; NO
+")
+
+tab <- kable(FEP, linesep = "", caption = '[GDE2025] SCH First-episode psychosis', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Organic, echo=FALSE}
+Organic <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+4100247;	Organic psychotic condition;	191447007;	SNOMED;	NO;	YES;	NO
+")
+
+tab <- kable(Organic, linesep = "", caption = '[PP2025 FEP2] Organic and drug-induced psychoses', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+* Antipsychotic concept sets:
+
+```{r Risperidone, echo=FALSE}
+Risperidone <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(Risperidone, linesep = "", caption = '[GDE2025] SCH Risperidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Haloperidol, echo=FALSE}
+Haloperidol <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(Haloperidol, linesep = "", caption = '[GDE2025] SCH Haloperidol', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Olanzapine, echo=FALSE}
+Olanzapine <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+785788; olanzapine; 61381; RxNorm; NO; YES; NO
+")
+
+tab <- kable(Olanzapine, linesep = "", caption = '[GDE2025] SCH Olanzapine', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Aripiprazole, echo=FALSE}
+Aripiprazole <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+757688; aripiprazole; 89013; RxNorm; NO; YES; NO
+")
+
+tab <- kable(Aripiprazole, linesep = "", caption = '[GDE2025] SCH Aripiprazole', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Brexpiprazole, echo=FALSE}
+Brexpiprazole <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+46275300; brexpiprazole; 1658314; RxNorm; NO; YES; NO
+")
+
+tab <- kable(Brexpiprazole, linesep = "", caption = '[GDE2025] SCH Brexpiprazole', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Ziprazidone, echo=FALSE}
+Ziprazidone <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+712615; ziprasidone; 115698; RxNorm; NO; YES; NO
+")
+
+tab <- kable(Ziprazidone, linesep = "", caption = '[GDE2025] SCH Ziprazidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Lurazidone, echo=FALSE}
+Lurazidone <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+40230761; lurasidone; 1040028; RxNorm; NO; YES; NO
+")
+
+tab <- kable(Lurazidone, linesep = "", caption = '[GDE2025] SCH Lurazidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Paliperidone, echo=FALSE}
+Paliperidone <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+703244; paliperidone; 679314; RxNorm; NO; YES; NO
+")
+
+tab <- kable(Paliperidone, linesep = "", caption = '[GDE2025] SCH Paliperidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r Quetiapine, echo=FALSE}
+Quetiapine <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+")
+
+tab <- kable(Paliperidone, linesep = "", caption = '[GDE2025] SCH Quetiapine', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+** 'Any other antipsychotic' concept sets:
+
+```{r APwoRisp, echo=FALSE}
+APwoRisp <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoRisp, linesep = "", caption = '[GDE2025] SCH APs wo Risperidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoHal, echo=FALSE}
+APwoHal <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoHal, linesep = "", caption = '[GDE2025] SCH APs wo Haloperidol', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoArip, echo=FALSE}
+APwoArip <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoArip, linesep = "", caption = '[GDE2025] SCH APs wo Aripiprazole', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoBrex, echo=FALSE}
+APwoBrex <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoBrex, linesep = "", caption = '[GDE2025] SCH APs wo Brexpiprazole', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoOlan, echo=FALSE}
+APwoOlan <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoOlan, linesep = "", caption = '[GDE2025] SCH APs wo Olanzapine', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoZipr, echo=FALSE}
+APwoZipr <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoZipr, linesep = "", caption = '[GDE2025] SCH APs wo Ziprazidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoLura, echo=FALSE}
+APwoLura <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoLura, linesep = "", caption = '[GDE2025] SCH APs wo Lurasidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoPali, echo=FALSE}
+APwoPali <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+766843; quetiapine 300 MG; 331545; RxNorm; NO; YES; NO
+766844; quetiapine 100 MG; 343199; RxNorm; NO; YES; NO
+766848; quetiapine 150 MG; 393456; RxNorm; NO; YES; NO
+766849; quetiapine 400 MG; 616482; RxNorm; NO; YES; NO
+19095296; quetiapine 200 MG; 343200; RxNorm; NO; YES; NO
+35884652; quetiapine 600 MG; OMOP5034049; RxNorm Extension; NO; YES; NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoPali, linesep = "", caption = '[GDE2025] SCH APs wo Paliperidone', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
+
+```{r APwoQuet, echo=FALSE}
+APwoQuet <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+766529;	haloperidol;	5093;	RxNorm;	NO;	YES;	NO
+756018;	fluphenazine;	4496;	RxNorm;	NO;	YES;	NO
+704984;	trifluoperazine;	10800;	RxNorm;	NO;	YES;	NO
+794852;	chlorpromazine;	2403;	RxNorm;	NO;	YES;	NO
+19057607;	amisulpride;	46303;	RxNorm;	NO;	YES;	NO
+757688;	aripiprazole;	89013;	RxNorm;	NO;	YES;	NO
+40164052;	asenapine;	784649;	RxNorm;	NO;	YES;	NO
+46275300;	brexpiprazole;	1658314;	RxNorm;	NO;	YES;	NO
+35603277;	cariprazine;	1667655;	RxNorm;	NO;	YES;	NO
+735979;	risperidone;	35636;	RxNorm;	NO;	YES;	NO
+785788;	olanzapine;	61381;	RxNorm;	NO;	YES;	NO
+712615;	ziprasidone;	115698;	RxNorm;	NO;	YES;	NO
+792263;	loxapine;	6475;	RxNorm;	NO;	YES;	NO
+709699;	molindone;	7019;	RxNorm;	NO;	YES;	NO
+733008;	perphenazine;	8076;	RxNorm;	NO;	YES;	NO
+745790;	pimozide;	8331;	RxNorm;	NO;	YES;	NO
+700299;	thioridazine;	10502;	RxNorm;	NO;	YES;	NO
+700465;	thiothixene;	10510;	RxNorm;	NO;	YES;	NO
+19017241;	iloperidone;	73178;	RxNorm;	NO;	YES;	NO
+40230761;	lurasidone;	1040028;	RxNorm;	NO;	YES;	NO
+703244;	paliperidone;	679314;	RxNorm;	NO;	YES;	NO
+")
+
+tab <- kable(APwoQuet, linesep = "", caption = '[GDE2025] SCH APs wo Quetiapine', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
 
 # Outcome Cohort Definitions
+Cohort Entry Events
+People may enter the cohort when observing any of the following:
+
+visit occurrences of '[GDE2025] SCH Inpatient Visit & ER'; having at least 1 condition occurrence of '[GDE 2025] SCH Outcome psychosis relapse', starting between 0 days before and all days after '[GDE2025] SCH Inpatient Visit & ER' start date and starting anytime on or before '[GDE2025] SCH Inpatient Visit & ER' end date.
+Limit cohort entry events to the earliest event per person.
+
+Inclusion Criteria
+1. Exclude SCs non-excludable otherwise: Exclude ICD10CM codes for dementia mapped to psychotic disorder
+Entry events having no condition occurrences of '[GDE2025] SCH First-episode psychosis' (including '[GDE2025] SCH FEP source codes for exclusion' source concepts), starting between 0 days before and all days after cohort entry start date and ending anytime on or before cohort entry end date.
+
+Cohort Exit
+The person exits the cohort at the end of continuous observation.
+
+Cohort Eras
+Remaining events will be combined into cohort eras if they are within 0 days of each other.
+
+Concept Sets (other than already described in the 'Exposure Cohort Definitions' section):
+```{r Relapse, echo=FALSE}
+Relapse <- readr::read_delim(col_names = c("Concept ID", "Concept Name", "Code", "Vocabulary", "Excluded", "Descendants", "Mapped"), delim = ";", trim_ws = TRUE, file = "
+436073; Psychotic disorder; 69322001; SNOMED; NO; YES; NO
+434900; Drug-induced psychosis; 191483003; SNOMED; YES; YES; NO
+4067987; Opioid-induced psychotic disorder with delusions; 20385005; SNOMED; YES; YES; NO
+4100247; Organic psychotic condition; 191447007; SNOMED; YES; YES; NO
+35622934; Psychosis and severe depression co-occurrent and due to bipolar affective disorder; 765176007; SNOMED; YES; YES; NO
+432590; Delusional disorder; 48500005; SNOMED; NO; YES; NO
+443559; Drug-induced delusional disorder; 427975003; SNOMED; YES; YES; NO
+375229; Organic delusional disorder; 5510009; SNOMED; YES; YES; NO
+4057246; Postpartum psychosis; 18260003; SNOMED; YES; YES; NO
+44782771; Presenile dementia with delusions; 31081000119101; SNOMED; YES; YES; NO
+380986; Senile dementia with delusion; 371024007; SNOMED; YES; YES; NO
+4154309; Severe recurrent major depression with psychotic features; 28475009; SNOMED; YES; YES; NO
+4141292; Severe recurrent major depression with psychotic features, mood-congruent; 33078009; SNOMED; YES; YES; NO
+4034842; Severe recurrent major depression with psychotic features, mood-incongruent; 15193003; SNOMED; YES; YES; NO
+434010; Schizotypal personality disorder; 31027006; SNOMED; NO; YES; NO
+36714473; Psychosis co-occurrent and due to Parkinson's disease; 719717006; SNOMED; YES; YES; NO
+35609824; Recurrent reactive depressive episodes, severe, with psychosis; 1086471000000103; SNOMED; YES; YES; NO
+4322477; Severe bipolar disorder with psychotic features, mood-congruent; 70546001; SNOMED; YES; YES; NO
+35609901; Late onset substance-induced psychosis; 1087461000000107; SNOMED; YES; YES; NO
+3187953; Postictal psychosis; 12920001000004106; Nebraska Lexicon; YES; YES; NO
+45757162; Psychotic disorder in mother complicating childbirth; 10760421000119102; SNOMED; YES; YES; NO
+45757163; Psychotic disorder in mother complicating pregnancy; 10760461000119107; SNOMED; YES; YES; NO
+4030431; Symbiotic infantile psychosis; 129602009; SNOMED; YES; YES; NO
+")
+
+tab <- kable(Relapse, linesep = "", caption = '[GDE 2025] SCH Outcome psychosis relapse', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```
 
 # Negative Control Concepts {#negative-controls}
+```{r NegControls, echo=FALSE}
+NegControls <- readr::read_delim(col_names = c("Outcome name", "Outcome concept ID"), delim = ",", trim_ws = TRUE, file = "
+Abnormal posture,439935
+Abrasion and/or friction burn of multiple sites,443585
+Absent kidney,4092879
+Anomaly of jaw size,45757682
+Benign paroxysmal positional vertigo,81878
+Colostomy present,4201390
+Complication of gastrostomy,434675
+Developmental delay,436077
+Deviated nasal septum,377910
+Epidermoid cyst,4170770
+Exhaustion due to excessive exertion,437448
+Feces contents abnormal,4092896
+Foreign body in ear,374801
+Foreskin deficient,4096540
+Galactosemia,439788
+Ganglion cyst,40481632
+Genetic disorder carrier,4168318
+Impacted cerumen,374375
+Jellyfish poisoning,4265896
+Lagophthalmos,381021
+Lipid storage disease,4027782
+Lymphangioma,433997
+Malingering,4051630
+Marfan's syndrome,258540
+Mechanical complication of internal orthopedic device, implant AND/OR graft,432798
+Minimal cognitive impairment,439795
+Nonspecific tuberculin test reaction,40480893
+Physiological development failure,437092
+Symbolic dysfunction,432436
+Tooth loss,433244
+Toxic effect of lead compound,436876
+Tracheostomy present,4201387
+Unsatisfactory tooth restoration,45757285
+Abnormal pupil,436409
+Abrasion and/or friction burn of trunk without infection,199192
+Absence of breast,4088290
+Acquired hallux valgus,75911
+Acquired keratoderma,137951
+Anal and rectal polyp,73241
+Burn of forearm,133655
+Calcaneal spur,73560
+Changes in skin texture,140842
+Chondromalacia of patella,81378
+Complication due to Crohn's disease,46269889
+Contact dermatitis,134438
+Contusion of knee,78619
+Crohn's disease,201606
+Derangement of knee,76786
+Disproportion of reconstructed breast,45757370
+Effects of hunger,433111
+Endometriosis,433527
+Feces contents abnormal,4092896
+Foreign body in orifice,259995
+Ganglion cyst,40481632
+Hammer toe,433577
+Hereditary thrombophilia,4231770
+Homocystinuria,4012934
+Impacted cerumen,374375
+Impingement syndrome of shoulder region,4344500
+Ingrowing nail,139099
+Injury of knee,444132
+Kwashiorkor,432593
+Late effect of contusion,434203
+Late effect of motor vehicle accident,438329
+Macular drusen,4083487
+Melena,4103703
+Noise effects on inner ear,377572
+Non-toxic multinodular goiter,136368
+Nonspecific tuberculin test reaction,40480893
+Passing flatus,4091513
+Postviral fatigue syndrome,4202045
+Presbyopia,373478
+Ptotic breast,81634
+Regular astigmatism,380706
+Senile hyperkeratosis,141932
+Somatic dysfunction of lumbar region,36713918
+Splinter of face without major open wound,443172
+Sprain of ankle,81151
+Strain of rotator cuff capsule,72748
+Tear film insufficiency,378427
+Verruca vulgaris,140641
+Wrist joint pain,4115367
+Wristdrop,440193
+")
+
+tab <- kable(NegControls, linesep = "", caption = 'Negative control outcomes', label = NA, booktabs = TRUE)
+
+if (knitr::is_latex_output()) {
+  tab %>% kable_styling(latex_options = c("striped", "hold_position"), 
+                        font_size = latex_table_font_size)
+} else {
+  tab %>% kable_styling(bootstrap_options = "striped")
+}
+```

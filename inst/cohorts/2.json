@@ -1967,6 +1967,31 @@
 					}
 				]
 			}
+		},
+		{
+			"id" : 19,
+			"name" : "[PP25 FEP2] All psychotic disorders",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 436073,
+							"CONCEPT_NAME" : "Psychotic disorder",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "69322001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Disorder"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
 		}
 	],
 	"QualifiedLimit" : {
@@ -2223,7 +2248,7 @@
 					{
 						"Criteria" : {
 							"ConditionOccurrence" : {
-								"CodesetId" : 10
+								"CodesetId" : 19
 							}
 						},
 						"StartWindow" : {

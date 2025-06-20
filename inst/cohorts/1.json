@@ -1917,6 +1917,56 @@
 					}
 				]
 			}
+		},
+		{
+			"id" : 13,
+			"name" : "[PP25 FEP2] All psychotic disorders",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 436073,
+							"CONCEPT_NAME" : "Psychotic disorder",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "69322001",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Disorder"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
+		},
+		{
+			"id" : 14,
+			"name" : "[PP2025 FEP2] Organic and drug-induced psychoses",
+			"expression" : {
+				"items" : [
+					{
+						"concept" : {
+							"CONCEPT_ID" : 374009,
+							"CONCEPT_NAME" : "Organic mental disorder",
+							"STANDARD_CONCEPT" : "S",
+							"STANDARD_CONCEPT_CAPTION" : "Standard",
+							"INVALID_REASON" : "V",
+							"INVALID_REASON_CAPTION" : "Valid",
+							"CONCEPT_CODE" : "111479008",
+							"DOMAIN_ID" : "Condition",
+							"VOCABULARY_ID" : "SNOMED",
+							"CONCEPT_CLASS_ID" : "Disorder"
+						},
+						"isExcluded" : false,
+						"includeDescendants" : true,
+						"includeMapped" : false
+					}
+				]
+			}
 		}
 	],
 	"QualifiedLimit" : {
@@ -2173,7 +2223,7 @@
 					{
 						"Criteria" : {
 							"ConditionOccurrence" : {
-								"CodesetId" : 10
+								"CodesetId" : 13
 							}
 						},
 						"StartWindow" : {
@@ -2294,11 +2344,13 @@
 				"CriteriaList" : [
 					{
 						"Criteria" : {
-							"ConditionOccurrence" : {}
+							"ConditionOccurrence" : {
+								"CodesetId" : 14
+							}
 						},
 						"StartWindow" : {
 							"Start" : {
-								"Days" : 30,
+								"Days" : 60,
 								"Coeff" : -1
 							},
 							"End" : {

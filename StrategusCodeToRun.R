@@ -19,35 +19,34 @@ Sys.setenv("VROOM_THREADS"=1) # Sets the number of threads to 1 to avoid deadloc
 
 ##=========== START OF INPUTS ==========
 
-cdmDatabaseSchema <- "cdm_531"
-workDatabaseSchema <- "alex_alexeyuk_results"
+cdmDatabaseSchema <- "main"
+workDatabaseSchema <- "main"
 outputLocation <- file.path(getwd(), "results")
-databaseName <- "synpuf" # Only used as a folder name for results from the study
+# Name the database with which the study is being run
+databaseName <- "Eunomia" # Only used as a folder name for results from the study
 minCellCount <- 5
-cohortTableName <- "sample_study"
+cohortTableName <- "fep2_study"
 
 # Create the connection details for your CDM
 # More details on how to do this are found here:
 # https://ohdsi.github.io/DatabaseConnector/reference/createConnectionDetails.html
-# connectionDetails <- DatabaseConnector::createConnectionDetails(
-#   dbms = Sys.getenv("DBMS_TYPE"),
-#   connectionString = Sys.getenv("CONNECTION_STRING"),
-#   user = Sys.getenv("DBMS_USERNAME"),
-#   password = Sys.getenv("DBMS_PASSWORD")
-# )
+ connectionDetails <- DatabaseConnector::createConnectionDetails(
+   dbms = Sys.getenv("DBMS_TYPE"),
+   connectionString = Sys.getenv("CONNECTION_STRING"),
+   user = Sys.getenv("DBMS_USERNAME"),
+   password = Sys.getenv("DBMS_PASSWORD")
+ )
 
 # For this example we will use the Eunomia sample data 
 # set. This library is not installed by default so you
 # can install this by running:
 #
 # install.packages("Eunomia")
-connectionDetails <- DatabaseConnector::createConnectionDetails(
-  dbms = "postgresql",
-  server = Sys.getenv("SERVER"),
-  user = Sys.getenv("DB_USER"),
-  password = Sys.getenv("DB_PASSWORD"),
-  port = "5441"
-)
+# library(Eunomia)
+# install.packages("DatabaseConnector")
+# library(DatabaseConnector)
+#connectionDetails <- getEunomiaConnectionDetails()
+#conn <- connect(connectionDetails)
 
 # You can use this snippet to test your connection
 #conn <- DatabaseConnector::connect(connectionDetails)

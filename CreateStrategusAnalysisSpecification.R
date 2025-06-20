@@ -76,6 +76,7 @@ ingredients <- tibble(
                    "brexpiprazole", "olanzapine", "quetiapine", 
                    "paliperidone", "paliperidone")
   )
+
 # Cohorts for the CohortMethod analysis
 cmTcList <- data.frame(
   targetCohortId = 1:9,  

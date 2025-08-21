@@ -14,14 +14,14 @@
 library(ShinyAppBuilder)
 library(OhdsiShinyModules)
 
-resultsDatabaseSchema <- "results"
+resultsDatabaseSchema <- "fep2_results"
 
 # Specify the connection to the results database
 resultsConnectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = "postgresql",
-  server = Sys.getenv("OHDSI_RESULTS_DATABASE_SERVER"),
-  user = Sys.getenv("OHDSI_RESULTS_DATABASE_USER"),
-  password = Sys.getenv("OHDSI_RESULTS_DATABASE_PASSWORD")
+  server = Sys.getenv("server"),
+  user = Sys.getenv("user"),
+  password = Sys.getenv("password")
 )
 
 # ADD OR REMOVE MODULES TAILORED TO YOUR STUDY
@@ -37,15 +37,15 @@ shinyConfig <- initializeModuleConfig() |>
   ) |>
   addModuleConfig(
     createDefaultCohortDiagnosticsConfig()
-  ) |>
-  addModuleConfig(
-    createDefaultCharacterizationConfig()
-  ) |>
-  addModuleConfig(
-    createDefaultPredictionConfig()
-  ) |>
-  addModuleConfig(
-    createDefaultEstimationConfig()
+#  ) |>
+#  addModuleConfig(
+#    createDefaultCharacterizationConfig()
+#  ) |>
+#  addModuleConfig(
+#    createDefaultPredictionConfig()
+#  ) |>
+#  addModuleConfig(
+#    createDefaultEstimationConfig()
   ) 
 
 # now create the shiny app based on the config file and view the results

@@ -19,15 +19,15 @@
 # ##############################################################################
 
 # Code for uploading results to a Postgres database
-resultsDatabaseSchema <- "results"
+resultsDatabaseSchema <- "fep2_results"
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/sampleStudy/sampleStudyAnalysisSpecification.json"
+  fileName = "inst/FepPharmacotherapyAnalysisSpecification.json"
 )
 resultsDatabaseConnectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = "postgresql",
-  server = Sys.getenv("OHDSI_RESULTS_DATABASE_SERVER"),
-  user = Sys.getenv("OHDSI_RESULTS_DATABASE_USER"),
-  password = Sys.getenv("OHDSI_RESULTS_DATABASE_PASSWORD")
+  server = Sys.getenv("server"),
+  user = Sys.getenv("user"),
+  password = Sys.getenv("password")
 )
 
 # Setup logging ----------------------------------------------------------------
@@ -42,10 +42,12 @@ ParallelLogger::addDefaultErrorReportLogger(
 )
 
 # Upload Results ---------------------------------------------------------------
-for (resultFolder in list.dirs(path = "results", full.names = T, recursive = F)) {
+# For 'folder', insert the appropriate DP folder
+
+for (resultFolder in list.dirs(path = "results/folder", full.names = T, recursive = F)) {
   resultsDataModelSettings <- Strategus::createResultsDataModelSettings(
     resultsDatabaseSchema = resultsDatabaseSchema,
-    resultsFolder = file.path(resultFolder, "strategusOutput"),
+    resultsFolder = file.path(resultsFolder)
   )
   
   Strategus::uploadResults(

@@ -12,25 +12,34 @@
 # ##############################################################################
 
 # Code for creating the result schema and tables in a PostgreSQL database
-resultsDatabaseSchema <- "results"
+resultsDatabaseSchema <- "fep2_results"
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(
-  fileName = "inst/sampleStudy/sampleStudyAnalysisSpecification.json"
+  fileName = "inst/FepPharmacotherapyAnalysisSpecification.json"
 )
 
 resultsDatabaseConnectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = "postgresql",
-  server = Sys.getenv("OHDSI_RESULTS_DATABASE_SERVER"),
-  user = Sys.getenv("OHDSI_RESULTS_DATABASE_USER"),
-  password = Sys.getenv("OHDSI_RESULTS_DATABASE_PASSWORD")
+  server = Sys.getenv("server"),
+  user = Sys.getenv("user"),
+  password = Sys.getenv("password")
 )
+
+# Tests
+#connection <- DatabaseConnector::connect(dbms = "postgresql",
+#                                         server = Sys.getenv("server"),
+#                                         user = Sys.getenv("user"),
+#                                         password = Sys.getenv("password"))
+#DatabaseConnector::querySql(connection, "SELECT 1;")  # Simple query to test connection
 
 # Create results data model -------------------------
 
 # Use the 1st results folder to define the results data model
-resultsFolder <- list.dirs(path = "results", full.names = T, recursive = F)[1]
+# For 'folder', insert the appropriate DP folder
+
+resultsFolder <- list.dirs(path = "results/folder", full.names = T, recursive = F)[1]
 resultsDataModelSettings <- Strategus::createResultsDataModelSettings(
   resultsDatabaseSchema = resultsDatabaseSchema,
-  resultsFolder = file.path(resultsFolder, "strategusOutput")
+  resultsFolder = file.path(resultsFolder)
 )
 
 Strategus::createResultDataModel(

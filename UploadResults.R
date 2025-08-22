@@ -44,17 +44,36 @@ ParallelLogger::addDefaultErrorReportLogger(
 # Upload Results ---------------------------------------------------------------
 # For 'folder', insert the appropriate DP folder
 
-for (resultFolder in list.dirs(path = "results/folder", full.names = T, recursive = F)) {
-  resultsDataModelSettings <- Strategus::createResultsDataModelSettings(
-    resultsDatabaseSchema = resultsDatabaseSchema,
-    resultsFolder = file.path(resultsFolder)
-  )
+#for (resultFolder in list.dirs(path = "results/folder", full.names = T, recursive = F)) {
+#  resultsDataModelSettings <- Strategus::createResultsDataModelSettings(
+#    resultsDatabaseSchema = resultsDatabaseSchema,
+#    resultsFolder = file.path(resultsFolder)
+#  )
   
-  Strategus::uploadResults(
-    analysisSpecifications = analysisSpecifications,
-    resultsDataModelSettings = resultsDataModelSettings,
-    resultsConnectionDetails = resultsDatabaseConnectionDetails
-  )
+#  Strategus::uploadResults(
+#    analysisSpecifications = analysisSpecifications,
+#    resultsDataModelSettings = resultsDataModelSettings,
+#    resultsConnectionDetails = resultsDatabaseConnectionDetails
+#  )
+#}
+
+# Upload result for multiple Data Partners simultaneously
+
+for (dataPartnerFolder in list.dirs(path = "results", full.names = TRUE, recursive = FALSE)) {
+  for (resultFolder in list.dirs(path = dataPartnerFolder, full.names = TRUE, recursive = FALSE)) {
+    # Create results data model settings for the current result folder
+    resultsDataModelSettings <- Strategus::createResultsDataModelSettings(
+      resultsDatabaseSchema = resultsDatabaseSchema,
+      resultsFolder = file.path(resultFolder)
+    )
+    
+    # Upload results for the current result folder
+    Strategus::uploadResults(
+      analysisSpecifications = analysisSpecifications,
+      resultsDataModelSettings = resultsDataModelSettings,
+      resultsConnectionDetails = resultsDatabaseConnectionDetails
+    )
+  }
 }
 
 connection <- DatabaseConnector::connect(
